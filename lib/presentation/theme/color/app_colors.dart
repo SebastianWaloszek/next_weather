@@ -42,7 +42,7 @@ abstract class AppColors {
       ).getColor(context);
 
   static Color shadow(BuildContext context) => ThemedColor(
-        light: LightThemeColors.active,
-        dark: DarkThemeColors.active,
+        light: LightThemeColors.shadow,
+        dark: DarkThemeColors.shadow,
       ).getColor(context);
 }

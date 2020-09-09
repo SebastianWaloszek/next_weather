@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/common/error/failure.dart';
 import 'package:flutter_next_weather/domain/entities/weather_forecast.dart';
+import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
 import 'package:flutter_next_weather/domain/use_cases/weather/get_weather_forecast.dart';
 
 part 'home_page_event.dart';
@@ -26,16 +27,17 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   ) async* {
     if (event is LoadHomePageEvent) {
       yield* _handleLoadWeatherForecast(event);
+    } else if (event is SelectWeatherPreditionEvent) {
+      yield* _handleSelectWeatherPredition(event);
     }
   }
 
   Stream<HomePageState> _handleLoadWeatherForecast(LoadHomePageEvent event) async* {
     yield LoadingHomePageState.fromState(state);
-
     final result = await getWeatherForecast(2487956); // TODO: Replace San Francisco woeId placeholder
     yield* result.fold(
       onSuccess: (weatherForecast) async* {
-        yield LoadedHomePageState(weatherForecast);
+        yield LoadedHomePageState(weatherForecast, weatherForecast?.weatherPredictions?.first);
       },
       onFailure: (failure) async* {
         yield FailedHomePageState.fromState(
@@ -43,6 +45,13 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
           failure: failure,
         );
       },
+    );
+  }
+
+  Stream<HomePageState> _handleSelectWeatherPredition(SelectWeatherPreditionEvent event) async* {
+    yield LoadedHomePageState.fromState(
+      state,
+      selectedWeatherPrediction: event.weatherPrediction,
     );
   }
 }

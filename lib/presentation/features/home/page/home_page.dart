@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
+import 'package:flutter_next_weather/presentation/mixins/refreshable.dart';
 
 import '../../../../common/utils/injector.dart';
 import '../bloc/home_page_bloc.dart';
@@ -16,13 +20,16 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with RefreshablePage {
   HomePageBloc get pageBloc => Injector.resolve();
+
+  bool wasLoadedOnce = false;
 
   @override
   void initState() {
-    _loadHomePage();
     super.initState();
+    initRefreshCompleter();
+    _loadHomePage();
   }
 
   void _loadHomePage() {
@@ -31,20 +38,48 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void _changeLocation() {
+//TODO: Implement such functionality in the future
+  }
+
+  void _selectWeatherPredition(WeatherPrediction weatherPrediction) {
+    pageBloc.add(SelectWeatherPreditionEvent(weatherPrediction));
+  }
+
+  void _handlePageWasLoaded() {
+    setState(() {
+      wasLoadedOnce = true;
+      handleRefreshCompletion();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomePageBloc, HomePageState>(
+    return BlocConsumer<HomePageBloc, HomePageState>(
       cubit: pageBloc,
-      builder: (context, state) {
-        return HomePageBody(
-          HomePageBodyParameters(
-            context,
-            weatherForecast: state.weatherForecast,
-            loadWeatherForecast: _loadHomePage,
-            isLoading: state is LoadingHomePageState,
-          ),
-        );
-      },
+      listener: _buildBlocListener,
+      builder: _buildBlocBuilder,
+    );
+  }
+
+  void _buildBlocListener(BuildContext context, HomePageState state) {
+    if (state is LoadedHomePageState) {
+      _handlePageWasLoaded();
+    }
+  }
+
+  Widget _buildBlocBuilder(BuildContext context, HomePageState state) {
+    return HomePageBody(
+      HomePageBodyParameters(
+        context,
+        weatherForecast: state.weatherForecast,
+        loadWeatherForecast: _loadHomePage,
+        selectWeatherPredition: _selectWeatherPredition,
+        selectedWeatherPrediction: state.selectedWeatherPrediction,
+        wasLoadedOnce: wasLoadedOnce,
+        refreshCompleter: refreshCompleter,
+        changeLocation: _changeLocation,
+      ),
     );
   }
 }

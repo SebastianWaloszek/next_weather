@@ -9,3 +9,11 @@ abstract class HomePageEvent extends Equatable {
 }
 
 class LoadHomePageEvent extends HomePageEvent {}
+
+class SelectWeatherPreditionEvent extends HomePageEvent {
+  final WeatherPrediction weatherPrediction;
+
+  const SelectWeatherPreditionEvent(
+    this.weatherPrediction,
+  );
+}
