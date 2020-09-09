@@ -6,7 +6,7 @@ class GetWeatherForecastRequest extends Request<WeatherForecast> {
   GetWeatherForecastRequest(
     int woeId,
   ) : super(
-          path: 'location/$woeId',
+          path: 'api/location/$woeId',
         );
 
   @override

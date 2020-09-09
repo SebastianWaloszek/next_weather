@@ -18,9 +18,6 @@ class _MyAppState extends State<MyApp> {
       theme: appThemes[ThemeMode.light],
       darkTheme: appThemes[ThemeMode.dark],
       routes: navigationRoutes,
-      home: Scaffold(
-        body: Center(child: Text('Hello world')),
-      ), // TODO: Remove placeholder
       localizationsDelegates: localizationDelegates,
       supportedLocales: supportedLocales,
     );

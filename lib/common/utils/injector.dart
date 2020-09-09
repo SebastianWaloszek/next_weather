@@ -14,6 +14,7 @@ import 'package:flutter_next_weather/data/network/network_service_impl.dart';
 import 'package:flutter_next_weather/data/repositories/weather_repository_impl.dart';
 import 'package:flutter_next_weather/domain/repositories/weather_repository.dart';
 import 'package:flutter_next_weather/domain/use_cases/weather/get_weather_forecast.dart';
+import 'package:flutter_next_weather/presentation/features/home/bloc/home_page_bloc.dart';
 import 'package:kiwi/kiwi.dart';
 
 class Injector {
@@ -104,6 +105,7 @@ class Injector {
     //                     //
     //  P A G E   B L O C  //
     //                     //
+    container.registerSingleton((c) => HomePageBloc(getWeatherForecast: c.resolve()));
   }
 
   static void _commonDevelopment() {

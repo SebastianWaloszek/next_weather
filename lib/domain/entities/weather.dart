@@ -6,7 +6,6 @@ import 'package:flutter_next_weather/domain/entities/weather_state.dart';
 import 'package:flutter_next_weather/domain/entities/wind_speed.dart';
 
 abstract class Weather extends Equatable {
-  final String description;
   final WeatherState state;
   final Temperature temperature;
   final AirPressure airPressure;
@@ -14,17 +13,15 @@ abstract class Weather extends Equatable {
   final WindSpeed windSpeed;
 
   const Weather({
-    this.description,
     this.state,
     this.temperature,
     this.airPressure,
     this.humidity,
     this.windSpeed,
-  });
+  }) : assert(state != null || temperature != null || airPressure != null || windSpeed != null,);
 
   @override
   List<Object> get props => [
-        description,
         state,
         temperature,
         airPressure,

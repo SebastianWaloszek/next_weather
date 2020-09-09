@@ -1,41 +1,22 @@
-enum WeatherState {
-  snow,
-  sleet,
-  hail,
-  thunderstorm,
-  heavyRain,
-  lightRain,
-  showers,
-  heavyCloud,
-  lightCloud,
-  clear,
-}
+import 'package:equatable/equatable.dart';
 
-extension WeatherStateExtensions on WeatherState {
-  static WeatherState fromAbbreviation(String abbreviation) {
-    switch (abbreviation) {
-      case 'sn':
-        return WeatherState.snow;
-      case 'sl':
-        return WeatherState.sleet;
-      case 'h':
-        return WeatherState.hail;
-      case 't':
-        return WeatherState.thunderstorm;
-      case 'hr':
-        return WeatherState.heavyRain;
-      case 'lr':
-        return WeatherState.lightRain;
-      case 's':
-        return WeatherState.showers;
-      case 'hc':
-        return WeatherState.heavyCloud;
-      case 'lc':
-        return WeatherState.lightCloud;
-      case 'c':
-        return WeatherState.clear;
-      default:
-        throw UnsupportedError('$abbreviation abbreviation is not supported');
-    }
-  }
+import 'package:flutter_next_weather/domain/entities/weather_type.dart';
+
+class WeatherState extends Equatable {
+  final String description;
+  final WeatherType type;
+  final String imageUrl;
+
+  const WeatherState({
+    this.description,
+    this.type,
+    this.imageUrl,
+  }) : assert(description != null || type != null || imageUrl != null);
+
+  @override
+  List<Object> get props => [
+        description,
+        type,
+        imageUrl,
+      ];
 }
