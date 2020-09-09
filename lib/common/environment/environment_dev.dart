@@ -2,8 +2,7 @@ import 'environment.dart';
 
 class DevelopmentEnvironment implements Environment {
   @override
-  // TODO: implement baseUrl
-  String get baseUrl => throw UnimplementedError();
+  String get baseUrl => 'https://www.metaweather.com/api/';
 
   @override
   bool get useMockData => false;

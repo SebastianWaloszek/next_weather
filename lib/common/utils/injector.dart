@@ -5,10 +5,15 @@ import 'package:flutter_next_weather/common/blocs/network/network_bloc.dart';
 import 'package:flutter_next_weather/common/environment/environment.dart';
 import 'package:flutter_next_weather/common/environment/environment_dev.dart';
 import 'package:flutter_next_weather/common/environment/environment_prod.dart';
+import 'package:flutter_next_weather/data/data_sources/remote/remote_weather_data_source.dart';
+import 'package:flutter_next_weather/data/data_sources/weather_data_source.dart';
 import 'package:flutter_next_weather/data/network/mock_interceptor.dart';
 import 'package:flutter_next_weather/data/network/network_info.dart';
 import 'package:flutter_next_weather/data/network/network_service.dart';
 import 'package:flutter_next_weather/data/network/network_service_impl.dart';
+import 'package:flutter_next_weather/data/repositories/weather_repository_impl.dart';
+import 'package:flutter_next_weather/domain/repositories/weather_repository.dart';
+import 'package:flutter_next_weather/domain/use_cases/weather/get_weather_forecast.dart';
 import 'package:kiwi/kiwi.dart';
 
 class Injector {
@@ -59,7 +64,10 @@ class Injector {
     //  N E T W O R K  //
     //                 //
     container.registerSingleton(
-      (c) => Dio(BaseOptions())..interceptors.addAll(c.resolve()),
+      (c) => Dio(BaseOptions(
+        baseUrl: Environment.current.baseUrl,
+      ))
+        ..interceptors.addAll(c.resolve()),
     );
 
     container.registerSingleton<NetworkService>(
@@ -72,14 +80,21 @@ class Injector {
     //                         //
     //  D A T A   S O U R C E  //
     //                         //
+    container.registerSingleton<WeatherDataSource>(
+      (c) => RemoteWeatherDataSource(networkService: c.resolve()),
+    );
 
     //                       //
     //  R E P O S I T O R Y  //
     //                       //
+    container.registerSingleton<WeatherRepository>(
+      (c) => WeatherRepositoryImpl(dataSource: c.resolve()),
+    );
 
     //                   //
     //  U S E   C A S E  //
     //                   //
+    container.registerSingleton((c) => GetWeatherForecast(weatherRepository: c.resolve()));
 
     //             //
     //  B L O C S  //
