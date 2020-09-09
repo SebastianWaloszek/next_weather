@@ -1,9 +1,14 @@
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_next_weather/common/blocs/network/network_bloc.dart';
 import 'package:flutter_next_weather/common/environment/environment.dart';
 import 'package:flutter_next_weather/common/environment/environment_dev.dart';
 import 'package:flutter_next_weather/common/environment/environment_prod.dart';
-import 'package:flutter_next_weather/common/network/mock_interceptor.dart';
+import 'package:flutter_next_weather/data/network/mock_interceptor.dart';
+import 'package:flutter_next_weather/data/network/network_info.dart';
+import 'package:flutter_next_weather/data/network/network_service.dart';
+import 'package:flutter_next_weather/data/network/network_service_impl.dart';
 import 'package:kiwi/kiwi.dart';
 
 class Injector {
@@ -50,6 +55,20 @@ class Injector {
   }
 
   static void _common() {
+    //                 //
+    //  N E T W O R K  //
+    //                 //
+    container.registerSingleton(
+      (c) => Dio(BaseOptions())..interceptors.addAll(c.resolve()),
+    );
+
+    container.registerSingleton<NetworkService>(
+      (c) => NetworkServiceImpl(
+        networkInfo: c.resolve(),
+        dio: c.resolve(),
+        networkBloc: c.resolve(),
+      ),
+    );
     //                         //
     //  D A T A   S O U R C E  //
     //                         //
@@ -65,6 +84,7 @@ class Injector {
     //             //
     //  B L O C S  //
     //             //
+    container.registerSingleton((c) => NetworkBloc(networkInfo: c.resolve()));
 
     //                     //
     //  P A G E   B L O C  //
@@ -93,7 +113,12 @@ class Injector {
   //        //
   // MOBILE //
   //        //
-  static void _mobileCommon() {}
+  static void _mobileCommon() {
+    container.registerSingleton<NetworkInfo>(
+      (c) => NetworkInfoImpl(c.resolve()),
+    );
+    container.registerSingleton((c) => DataConnectionChecker());
+  }
 
   static void _mobileDevelopment() {}
 
