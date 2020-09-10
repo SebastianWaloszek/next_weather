@@ -34,6 +34,7 @@ class NetworkServiceImpl extends NetworkService {
       return FailureResult<T, NetworkFailure>(NetworkFailure());
     }
     try {
+      _notifyBlocNetworkIsEvaluated();
       final result = await requestFunction.call();
       _notifyBlocNetworkIsAvailable();
       return SuccessResult(result as T);
@@ -44,6 +45,10 @@ class NetworkServiceImpl extends NetworkService {
       _notifyBlocOfUnexpectedError();
       return FailureResult<T, UnexpectedFailure>(UnexpectedFailure());
     }
+  }
+
+  void _notifyBlocNetworkIsEvaluated() {
+    networkBloc.add(NetworkIsEvaluatingEvent());
   }
 
   void _notifyBlocNetworkIsAvailable() {

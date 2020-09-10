@@ -71,4 +71,9 @@ mixin AppLocalizationMessages {
         '$min$unit / $max$unit',
         name: 'temperatureRange',
       );
+
+  String tapToTryAgain() => Intl.message(
+        'Tap to try again',
+        name: 'tapToTryAgain',
+      );
 }

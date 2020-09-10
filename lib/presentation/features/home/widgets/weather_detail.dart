@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/presentation/theme/app_text_styles.dart';
 import 'package:flutter_next_weather/presentation/theme/color/app_colors.dart';
-import 'package:flutter_next_weather/presentation/widgets/animated_number_text.dart';
 import 'package:flutter_next_weather/presentation/widgets/animated_unit_number_text.dart';
 
 class WeatherDetail extends StatelessWidget {

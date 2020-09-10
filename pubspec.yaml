@@ -39,6 +39,7 @@ flutter:
   assets:
     - resources/fonts/
     - resources/graphics/
+    - resources/graphics/images/
     - resources/json/
 
   fonts:

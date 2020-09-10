@@ -65,6 +65,12 @@ class _HomePageState extends State<HomePage> with RefreshablePage {
   void _buildBlocListener(BuildContext context, HomePageState state) {
     if (state is LoadedHomePageState) {
       _handlePageWasLoaded();
+    } else if (state is FailedHomePageState) {
+      handleRefreshCompletion();
+      setState(() {
+        wasLoadedOnce = false;
+        handleRefreshCompletion();
+      });
     }
   }
 

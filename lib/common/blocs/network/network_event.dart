@@ -10,6 +10,8 @@ abstract class NetworkEvent extends Equatable {
 
 class NetworkIsAvailableEvent extends NetworkEvent {}
 
+class NetworkIsEvaluatingEvent extends NetworkEvent {}
+
 class NetworkIsUnavailableEvent extends NetworkEvent {}
 
 class UnexpectedNetworkErrorEvent extends NetworkEvent {}

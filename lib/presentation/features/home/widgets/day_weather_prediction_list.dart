@@ -13,11 +13,16 @@ class DayWeatherPredictionList extends StatelessWidget {
 
   final EdgeInsets margin;
 
+  final Axis scrollDirection;
+
+  bool get isHorizontal => scrollDirection == Axis.horizontal;
+
   const DayWeatherPredictionList({
     Key key,
     @required this.weatherPredictions,
     @required this.onItemSelected,
     this.selectedWeatherPrediction,
+    this.scrollDirection = Axis.horizontal,
     this.margin,
   })  : assert(weatherPredictions != null),
         assert(onItemSelected != null),
@@ -26,7 +31,6 @@ class DayWeatherPredictionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: DayWeatherPredictionCell.size,
       margin: margin,
       child: _buildList(),
     );
@@ -35,27 +39,32 @@ class DayWeatherPredictionList extends StatelessWidget {
   Widget _buildList() {
     return ListView.separated(
       padding: EdgeInsets.symmetric(
-        vertical: AppThemeConstants.shadowBlurRadius,
-        horizontal: AppThemeConstants.horizontalPagePadding,
+        vertical: isHorizontal ? AppThemeConstants.shadowBlurRadius : AppThemeConstants.horizontalPagePadding,
+        horizontal: isHorizontal ? AppThemeConstants.horizontalPagePadding : AppThemeConstants.shadowBlurRadius,
       ),
       itemBuilder: _buildListItem,
       separatorBuilder: _buildSeparator,
       itemCount: weatherPredictions.length,
-      scrollDirection: Axis.horizontal,
+      scrollDirection: scrollDirection,
       shrinkWrap: true,
     );
   }
 
   Widget _buildSeparator(BuildContext context, int index) {
-    return SizedBox(width: itemOffset);
+    return SizedBox(
+      width: isHorizontal ? itemOffset : null,
+      height: isHorizontal ? null : itemOffset,
+    );
   }
 
   Widget _buildListItem(BuildContext context, int index) {
     final weatherPrediction = weatherPredictions.elementAt(index);
-    return DayWeatherPredictionCell(
-      weatherPrediction: weatherPrediction,
-      isSelected: weatherPrediction == selectedWeatherPrediction,
-      onSelected: onItemSelected,
+    return Center(
+      child: DayWeatherPredictionCell(
+        weatherPrediction: weatherPrediction,
+        isSelected: weatherPrediction == selectedWeatherPrediction,
+        onSelected: onItemSelected,
+      ),
     );
   }
 }

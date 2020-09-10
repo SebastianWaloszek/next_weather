@@ -30,12 +30,27 @@ class WeatherSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      child: Row(
-        children: <Widget>[
-          _buildLeftColumn(context),
-          _buildWeatherStateImage(),
-        ],
-      ),
+      child: _buildColumn(context),
+    );
+  }
+
+  Widget _buildColumn(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildLocationButton(context),
+        _buildWeatherStateRow(context),
+      ],
+    );
+  }
+
+  Widget _buildWeatherStateRow(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        _buildWeatherTextDetails(context),
+        _buildWeatherStateImage(),
+      ],
     );
   }
 
@@ -51,21 +66,13 @@ class WeatherSummary extends StatelessWidget {
     );
   }
 
-  Widget _buildLeftColumn(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        _buildLocationButton(context),
-        _buildWeatherTextDetails(context),
-      ],
-    );
-  }
-
   Widget _buildLocationButton(BuildContext context) {
-    return Button(
-      icon: Icons.location_on_outlined,
-      title: location.title,
-      onTapped: onLocationTapped,
+    return UnconstrainedBox(
+      child: Button(
+        icon: Icons.location_on_outlined,
+        title: location.title,
+        onTapped: onLocationTapped,
+      ),
     );
   }
 
@@ -94,7 +101,7 @@ class WeatherSummary extends StatelessWidget {
 
   Widget _buildWeatherStateText(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 10),
+      margin: const EdgeInsets.only(left: 5),
       child: Text(
         weatherPrediction.weather.state.description,
         style: AppTextStyles.body2(context),

@@ -100,7 +100,7 @@ class Injector {
     //             //
     //  B L O C S  //
     //             //
-    container.registerSingleton((c) => NetworkBloc(networkInfo: c.resolve()));
+    container.registerSingleton((c) => NetworkBloc());
 
     //                     //
     //  P A G E   B L O C  //
