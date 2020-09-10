@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/day_weather_prediction_list.dart';
+import 'package:flutter_next_weather/presentation/features/home/widgets/home_page_header.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/weather_details.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/weather_summary.dart';
 import 'package:flutter_next_weather/presentation/page/page_body.dart';
@@ -65,12 +66,21 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
 
   Widget _buildWeatherForecast() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
+        _buildHeader(),
         _buildWeatherSummary(),
         _buildWeatherDetails(),
         _buildDayWeatherPredictionList(),
       ],
+    );
+  }
+
+  Widget _buildHeader() {
+    return HomePageHeader(
+      margin: const EdgeInsets.symmetric(horizontal: AppThemeConstants.horizontalPagePadding),
+      weatherPrediction: parameters.selectedWeatherPrediction,
     );
   }
 
