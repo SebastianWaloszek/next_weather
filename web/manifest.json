@@ -1,6 +1,6 @@
 {
-    "name": "flutter_next_weather",
-    "short_name": "flutter_next_weather",
+    "name": "NextWeather",
+    "short_name": "NextWeather",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

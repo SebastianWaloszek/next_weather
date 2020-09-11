@@ -13,6 +13,7 @@ import 'package:flutter_next_weather/data/network/mock_interceptor.dart';
 import 'package:flutter_next_weather/data/network/network_info.dart';
 import 'package:flutter_next_weather/data/network/network_service.dart';
 import 'package:flutter_next_weather/data/network/network_service_impl.dart';
+import 'package:flutter_next_weather/data/network/web_network_info.dart';
 import 'package:flutter_next_weather/data/repositories/settings_repository_impl.dart';
 import 'package:flutter_next_weather/data/repositories/weather_repository_impl.dart';
 import 'package:flutter_next_weather/domain/repositories/settings_repository.dart';
@@ -142,7 +143,11 @@ class Injector {
   //     //
   // WEB //
   //     //
-  static void _webCommon() {}
+  static void _webCommon() {
+    container.registerSingleton<NetworkInfo>(
+      (c) => WebNetworkInfoImpl(),
+    );
+  }
 
   static void _webDevelopment() {}
 
