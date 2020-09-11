@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/presentation/theme/color/app_colors.dart';
-import 'package:flutter_next_weather/presentation/theme/device.dart';
 import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
 
 extension WidgetExtensions on Widget {

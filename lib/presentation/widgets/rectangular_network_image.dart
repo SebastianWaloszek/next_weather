@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_next_weather/domain/entities/weather_state.dart';
 
 class RectangularNetworkImage extends StatelessWidget {
   final String imageUrl;
