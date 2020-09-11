@@ -23,12 +23,12 @@ mixin AppLocalizationMessages {
       );
 
   String centigradeUnit() => Intl.message(
-        'C',
+        '°C',
         name: 'centigradeUnit',
       );
 
   String fahrenheitUnit() => Intl.message(
-        'F',
+        '°F',
         name: 'fahrenheitUnit',
       );
 
