@@ -5,16 +5,23 @@ import 'package:flutter_next_weather/common/blocs/network/network_bloc.dart';
 import 'package:flutter_next_weather/common/environment/environment.dart';
 import 'package:flutter_next_weather/common/environment/environment_dev.dart';
 import 'package:flutter_next_weather/common/environment/environment_prod.dart';
+import 'package:flutter_next_weather/data/data_sources/local/local_settings_data_source.dart';
 import 'package:flutter_next_weather/data/data_sources/remote/remote_weather_data_source.dart';
+import 'package:flutter_next_weather/data/data_sources/settings_data_source.dart';
 import 'package:flutter_next_weather/data/data_sources/weather_data_source.dart';
 import 'package:flutter_next_weather/data/network/mock_interceptor.dart';
 import 'package:flutter_next_weather/data/network/network_info.dart';
 import 'package:flutter_next_weather/data/network/network_service.dart';
 import 'package:flutter_next_weather/data/network/network_service_impl.dart';
+import 'package:flutter_next_weather/data/repositories/settings_repository_impl.dart';
 import 'package:flutter_next_weather/data/repositories/weather_repository_impl.dart';
+import 'package:flutter_next_weather/domain/repositories/settings_repository.dart';
 import 'package:flutter_next_weather/domain/repositories/weather_repository.dart';
+import 'package:flutter_next_weather/domain/use_cases/settings/load_settings.dart';
+import 'package:flutter_next_weather/domain/use_cases/settings/save_settings.dart';
 import 'package:flutter_next_weather/domain/use_cases/weather/get_weather_forecast.dart';
 import 'package:flutter_next_weather/presentation/features/home/bloc/home_page_bloc.dart';
+import 'package:flutter_next_weather/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:kiwi/kiwi.dart';
 
 class Injector {
@@ -81,6 +88,9 @@ class Injector {
     //                         //
     //  D A T A   S O U R C E  //
     //                         //
+    container.registerSingleton<SettingsDataSource>(
+      (c) => LocalSettingsDataSource(),
+    );
     container.registerSingleton<WeatherDataSource>(
       (c) => RemoteWeatherDataSource(networkService: c.resolve()),
     );
@@ -88,6 +98,9 @@ class Injector {
     //                       //
     //  R E P O S I T O R Y  //
     //                       //
+    container.registerSingleton<SettingsRepository>(
+      (c) => SettingsRepositoryImpl(settingsDataSource: c.resolve()),
+    );
     container.registerSingleton<WeatherRepository>(
       (c) => WeatherRepositoryImpl(dataSource: c.resolve()),
     );
@@ -95,12 +108,20 @@ class Injector {
     //                   //
     //  U S E   C A S E  //
     //                   //
+    container.registerSingleton((c) => LoadSettings(settingsRepository: c.resolve()));
+    container.registerSingleton((c) => SaveSettings(settingsRepository: c.resolve()));
     container.registerSingleton((c) => GetWeatherForecast(weatherRepository: c.resolve()));
 
     //             //
     //  B L O C S  //
     //             //
     container.registerSingleton((c) => NetworkBloc());
+    container.registerSingleton(
+      (c) => SettingsBloc(
+        loadSettings: c.resolve(),
+        saveSettings: c.resolve(),
+      ),
+    );
 
     //                     //
     //  P A G E   B L O C  //

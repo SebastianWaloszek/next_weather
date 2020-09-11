@@ -44,12 +44,5 @@ class LoadedHomePageState extends HomePageState {
 class FailedHomePageState extends HomePageState {
   final Failure failure;
 
-  FailedHomePageState.fromState(
-    HomePageState state, {
-    @required this.failure,
-  })  : assert(failure != null),
-        super(
-          weatherForecast: state.weatherForecast,
-          selectedWeatherPrediction: state.selectedWeatherPrediction,
-        );
+  FailedHomePageState(this.failure);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_next_weather/common/utils/extensions/widget_extensions.dart';
 import 'package:flutter_next_weather/presentation/theme/color/app_colors.dart';
 import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
 
@@ -50,7 +51,7 @@ class RoundedShadowContainer extends StatelessWidget {
 
   BoxDecoration _buildBoxDecoration(BuildContext context) {
     return BoxDecoration(
-      boxShadow: AppThemeConstants.getBoxShadow(context),
+      boxShadow: cellBoxShadow(context),
       color: color ?? AppColors.background(context),
       borderRadius: AppThemeConstants.borderRadius,
     );

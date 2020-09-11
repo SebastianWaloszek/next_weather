@@ -1,8 +1,12 @@
 import 'package:intl/intl.dart';
 
 extension DateTimeExtensions on DateTime {
+  String dayOfWeek() {
+    return DateFormat('EEEE').format(this);
+  }
+
   String format() {
-    return DateFormat('EEEE, MMM d').format(this);
+    return DateFormat('d MMM yyyy').format(this);
   }
 
   String dayOfWeekAbbreviated() {

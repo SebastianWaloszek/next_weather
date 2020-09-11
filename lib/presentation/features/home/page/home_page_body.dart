@@ -9,7 +9,6 @@ import 'package:flutter_next_weather/presentation/page/page_body.dart';
 import 'package:flutter_next_weather/presentation/page/scrollable_page_body_state.dart';
 import 'package:flutter_next_weather/presentation/theme/device.dart';
 import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
-import 'package:flutter_next_weather/presentation/widgets/loading_indicator.dart';
 import 'package:flutter_next_weather/presentation/widgets/network_dependent.dart';
 import 'package:flutter_next_weather/presentation/widgets/screen_dependent.dart';
 
@@ -104,8 +103,9 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
     ];
   }
 
-  Widget _buildHeader({double bottomOffset = 30}) {
+  Widget _buildHeader({double bottomOffset = 10}) {
     return HomePageHeader(
+      onSettingsTapped: parameters.openSettings,
       margin: EdgeInsets.only(
         left: AppThemeConstants.horizontalPagePadding,
         right: AppThemeConstants.horizontalPagePadding,

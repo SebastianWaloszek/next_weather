@@ -13,6 +13,8 @@ class HomePageBodyParameters extends PageBodyParameters {
   final void Function(WeatherPrediction) selectWeatherPredition;
   final void Function() changeLocation;
 
+  final void Function() openSettings;
+
   final Completer<void> refreshCompleter;
   final bool wasLoadedOnce;
 
@@ -22,11 +24,13 @@ class HomePageBodyParameters extends PageBodyParameters {
     this.selectedWeatherPrediction,
     @required this.loadWeatherForecast,
     @required this.selectWeatherPredition,
+    @required this.openSettings,
     @required this.changeLocation,
     @required this.refreshCompleter,
     @required this.wasLoadedOnce,
   })  : assert(loadWeatherForecast != null),
         assert(selectWeatherPredition != null),
+        assert(openSettings != null),
         assert(changeLocation != null),
         assert(refreshCompleter != null),
         assert(wasLoadedOnce != null),

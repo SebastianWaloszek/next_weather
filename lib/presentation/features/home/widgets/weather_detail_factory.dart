@@ -5,13 +5,18 @@ import 'package:flutter_next_weather/domain/entities/speed_unit.dart';
 import 'package:flutter_next_weather/domain/entities/weather.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/weather_detail.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
+import 'package:flutter_next_weather/presentation/mixins/global_settings.dart';
 
-abstract class WeatherDetailFactory {
-  static List<Widget> getWeatherDetails(BuildContext context, {@required Weather weather}) {
+abstract class WeatherDetailFactory with GlobalSettings {
+  static List<Widget> getWeatherDetails(
+    BuildContext context, {
+    @required Weather weather,
+    @required SpeedUnit windSpeedUnit,
+  }) {
     return [
       _buildHumidityDetail(context, weather),
       _buildPressureDetail(context, weather),
-      _buildWindDetail(context, weather),
+      _buildWindDetail(context, weather, windSpeedUnit),
     ];
   }
 
@@ -31,11 +36,11 @@ abstract class WeatherDetailFactory {
     );
   }
 
-  static Widget _buildWindDetail(BuildContext context, Weather weather) {
+  static Widget _buildWindDetail(BuildContext context, Weather weather, SpeedUnit windSpeedUnit) {
     return WeatherDetail(
       title: AppLocalizations.of(context).wind(),
-      value: weather.windSpeed.value.floor(),
-      valueUnit: SpeedUnit.milesPerHour.getDescription(context), // TODO: Change when enabling changing units
+      value: windSpeedUnit.getValueFromMilesPerHour(weather.windSpeed.value).floor(),
+      valueUnit: windSpeedUnit.getDescription(context),
     );
   }
 }

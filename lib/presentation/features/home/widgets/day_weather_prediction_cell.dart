@@ -36,7 +36,7 @@ class DayWeatherPredictionCell extends StatelessWidget {
       height: size,
       padding: EdgeInsets.all(cellPadding),
       width: size,
-      color: isSelected ? AppColors.primaryAccent(context) : AppColors.secondaryBackground(context),
+      color: isSelected ? AppColors.secondaryAccent(context) : AppColors.secondaryBackground(context),
       onTapped: () => onSelected(weatherPrediction),
       child: _buildContent(context),
     );

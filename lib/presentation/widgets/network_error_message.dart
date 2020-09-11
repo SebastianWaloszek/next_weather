@@ -55,7 +55,7 @@ class NetworkErrorMessage extends StatelessWidget {
           margin: const EdgeInsets.only(top: 10),
           textStyle: AppTextStyles.subtitle1(
             context,
-            color: AppColors.primaryAccent(context),
+            color: AppColors.secondaryContent(context),
           ),
         ),
       ],

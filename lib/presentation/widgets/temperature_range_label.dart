@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/domain/entities/temperature.dart';
+import 'package:flutter_next_weather/domain/entities/temperature_unit.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
+import 'package:flutter_next_weather/presentation/mixins/global_settings.dart';
 
-class TemperatureRangeLabel extends StatelessWidget {
+class TemperatureRangeLabel extends StatelessWidget with GlobalSettings {
   final Temperature temperature;
   final EdgeInsets margin;
 
@@ -28,8 +30,8 @@ class TemperatureRangeLabel extends StatelessWidget {
   Widget _buildText(BuildContext context) {
     return Text(
       AppLocalizations.of(context).temperatureRange(
-        min: temperature.min,
-        max: temperature.max,
+        min: settings.temperatureUnit.getValueFromCertigrade(temperature.min),
+        max: settings.temperatureUnit.getValueFromCertigrade(temperature.max),
         unit: AppLocalizations.of(context).degreeSign(),
       ),
       style: textStyle,

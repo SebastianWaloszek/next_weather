@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
+import 'package:flutter_next_weather/presentation/features/settings/page/settings_page.dart';
 import 'package:flutter_next_weather/presentation/mixins/refreshable.dart';
 
 import '../../../../common/utils/injector.dart';
@@ -53,6 +54,10 @@ class _HomePageState extends State<HomePage> with RefreshablePage {
     });
   }
 
+  void _openSettings() {
+    Navigator.of(context).pushNamed(SettingsPage.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomePageBloc, HomePageState>(
@@ -82,6 +87,7 @@ class _HomePageState extends State<HomePage> with RefreshablePage {
         loadWeatherForecast: _loadHomePage,
         selectWeatherPredition: _selectWeatherPredition,
         selectedWeatherPrediction: state.selectedWeatherPrediction,
+        openSettings: _openSettings,
         wasLoadedOnce: wasLoadedOnce,
         refreshCompleter: refreshCompleter,
         changeLocation: _changeLocation,

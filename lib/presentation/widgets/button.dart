@@ -9,34 +9,42 @@ class Button extends StatelessWidget {
 
   final void Function() onTapped;
 
+  final double width;
+  final double height;
+
   const Button({
     Key key,
     this.icon,
     this.title,
+    this.width,
+    this.height = 40,
     @required this.onTapped,
   })  : assert(icon != null || title != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      height: 40,
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      shape: RoundedRectangleBorder(borderRadius: AppThemeConstants.borderRadius),
-      color: AppColors.secondaryBackground(context),
-      onPressed: onTapped,
-      child: Row(
-        children: <Widget>[
-          _buildIcon(context),
-          _buildTitleText(context),
-        ],
+    return Container(
+      width: width,
+      child: MaterialButton(
+        height: height,
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        shape: RoundedRectangleBorder(borderRadius: AppThemeConstants.borderRadius),
+        color: AppColors.secondaryBackground(context),
+        onPressed: onTapped,
+        child: Row(
+          children: <Widget>[
+            _buildIcon(context),
+            if (title != null) _buildTitleText(context),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildIcon(BuildContext context) {
     return Icon(
-      Icons.location_on_outlined,
+      icon,
       color: AppColors.primaryAccent(context),
     );
   }

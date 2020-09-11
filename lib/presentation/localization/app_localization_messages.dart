@@ -76,4 +76,44 @@ mixin AppLocalizationMessages {
         'Tap to try again',
         name: 'tapToTryAgain',
       );
+
+  String settings() => Intl.message(
+        'Settings',
+        name: 'settings',
+      );
+
+  String appearance() => Intl.message(
+        'Appearance',
+        name: 'appearance',
+      );
+
+  String theme() => Intl.message(
+        'Theme',
+        name: 'theme',
+      );
+
+  String system() => Intl.message(
+        'System',
+        name: 'system',
+      );
+
+  String lightTheme() => Intl.message(
+        'Light',
+        name: 'lightTheme',
+      );
+
+  String darkTheme() => Intl.message(
+        'Dark',
+        name: 'darkTheme',
+      );
+
+  String temperatureUnits() => Intl.message(
+        'Temperature units',
+        name: 'temperatureUnits',
+      );
+
+  String speedUnits() => Intl.message(
+        'Speed units',
+        name: 'speedUnits',
+      );
 }

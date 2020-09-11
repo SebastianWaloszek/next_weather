@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/domain/entities/location.dart';
+import 'package:flutter_next_weather/domain/entities/temperature_unit.dart';
 import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
+import 'package:flutter_next_weather/presentation/mixins/global_settings.dart';
 import 'package:flutter_next_weather/presentation/theme/app_text_styles.dart';
 import 'package:flutter_next_weather/presentation/widgets/animated_unit_number_text.dart';
 import 'package:flutter_next_weather/presentation/widgets/button.dart';
 import 'package:flutter_next_weather/presentation/widgets/rectangular_network_image.dart';
 
-class WeatherSummary extends StatelessWidget {
+class WeatherSummary extends StatelessWidget with GlobalSettings {
   final WeatherPrediction weatherPrediction;
   final Location location;
 
@@ -91,7 +93,7 @@ class WeatherSummary extends StatelessWidget {
 
   Widget _buildTemperatureText(BuildContext context) {
     return AnimatedUnitNumberText(
-      value: weatherPrediction.weather.temperature.average,
+      value: settings.temperatureUnit.getValueFromCertigrade(weatherPrediction.weather.temperature.average),
       valueUnit: AppLocalizations.of(context).degreeSign(),
       valueTextStyle: AppTextStyles.headline1(context),
       valueUnitTextStyle: AppTextStyles.headline2(context),

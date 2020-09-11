@@ -44,15 +44,12 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
           weatherForecast,
           // Use _getSelectedWeatherPrediction for selecting same day as previously selected
           // Didn't use it here because it looks from the user perspective like the weather data wasn't
-          // changed but it was. 
+          // changed but it was.
           weatherForecast?.weatherPredictions?.first,
         );
       },
       onFailure: (failure) async* {
-        yield FailedHomePageState.fromState(
-          state,
-          failure: failure,
-        );
+        yield FailedHomePageState(failure);
       },
     );
   }

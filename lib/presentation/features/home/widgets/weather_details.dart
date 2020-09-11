@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_next_weather/common/utils/extensions/widget_extensions.dart';
 import 'package:flutter_next_weather/domain/entities/weather.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/weather_detail_factory.dart';
+import 'package:flutter_next_weather/presentation/mixins/global_settings.dart';
 import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
 import 'package:flutter_next_weather/presentation/widgets/screen_dependent.dart';
 
-class WeatherDetails extends StatelessWidget {
+class WeatherDetails extends StatelessWidget with GlobalSettings {
   static const double verticalPadding = 30;
 
   final Weather weather;
@@ -35,10 +37,10 @@ class WeatherDetails extends StatelessWidget {
   BoxDecoration _buildDecoration(BuildContext context) {
     return BoxDecoration(
       border: Border(
-        top: isVertical ? BorderSide.none : AppThemeConstants.getBorderSide(context),
-        bottom: isVertical ? BorderSide.none : AppThemeConstants.getBorderSide(context),
-        left: isVertical ? AppThemeConstants.getBorderSide(context) : BorderSide.none,
-        right: isVertical ? AppThemeConstants.getBorderSide(context) : BorderSide.none,
+        top: isVertical ? BorderSide.none : borderSide(context),
+        bottom: isVertical ? BorderSide.none : borderSide(context),
+        left: isVertical ? borderSide(context) : BorderSide.none,
+        right: isVertical ? borderSide(context) : BorderSide.none,
       ),
     );
   }
@@ -50,6 +52,7 @@ class WeatherDetails extends StatelessWidget {
         children: WeatherDetailFactory.getWeatherDetails(
           context,
           weather: weather,
+          windSpeedUnit: settings.windSpeedUnit,
         ),
       ),
       narrow: Row(
@@ -57,6 +60,7 @@ class WeatherDetails extends StatelessWidget {
         children: WeatherDetailFactory.getWeatherDetails(
           context,
           weather: weather,
+          windSpeedUnit: settings.windSpeedUnit,
         ),
       ),
     );

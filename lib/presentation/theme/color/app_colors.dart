@@ -21,6 +21,11 @@ abstract class AppColors {
         dark: DarkThemeColors.primaryAccent,
       ).getColor(context);
 
+  static Color secondaryAccent(BuildContext context) => ThemedColor(
+        light: LightThemeColors.secondaryAccent,
+        dark: DarkThemeColors.secondaryAccent,
+      ).getColor(context);
+
   static Color background(BuildContext context) => ThemedColor(
         light: LightThemeColors.background,
         dark: DarkThemeColors.background,
