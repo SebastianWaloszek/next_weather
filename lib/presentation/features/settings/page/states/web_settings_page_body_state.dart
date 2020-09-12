@@ -6,5 +6,6 @@ class WebSettingsPageBodyState extends SettingsPageBodyState {
   @override
   List<Widget> buildSections() => [
         buildAppearanceSection(),
+        buildDataSourceDisclaimerLabel(),
       ];
 }

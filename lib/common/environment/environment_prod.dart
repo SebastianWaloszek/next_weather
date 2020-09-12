@@ -6,4 +6,7 @@ class ProductionEnvironment implements Environment {
 
   @override
   bool get useMockData => false;
+
+  @override
+  String get dataSourceDisclaimerUrl => 'https://www.metaweather.com';
 }

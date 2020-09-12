@@ -116,4 +116,14 @@ mixin AppLocalizationMessages {
         'Speed units',
         name: 'speedUnits',
       );
+
+  String dataSourceDisclaimer() => Intl.message(
+        'Weather data provided by ',
+        name: 'dataSourceDisclaimer',
+      );
+
+  String dataSourceName() => Intl.message(
+        'MetaWeather.com',
+        name: 'dataSourceName',
+      );
 }

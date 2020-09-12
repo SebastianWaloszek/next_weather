@@ -9,5 +9,7 @@ abstract class Environment {
 
   String get baseUrl;
 
+  String get dataSourceDisclaimerUrl;
+
   bool get useMockData => false;
 }
