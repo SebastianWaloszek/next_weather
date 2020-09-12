@@ -30,6 +30,13 @@ The apps functionality and UI were tested on the following devices:
 - **Web**
     - Google Chrome (Version 85)
 
+## Localizations
+
+The apps supports the following localizations with appropriate translations:
+- English
+- German
+- Polish
+
 ## Running the app
 If you are using Visual Studio Code you can use the predefined lunch configurations. 
 
@@ -52,7 +59,7 @@ You can always modify the path in code to make it work.
 
 ## Web version
 
-The apps supports running it on the web with some caveats:
+The app supports running it on the web with some caveats:
 
 **1. The use of the MetaWeather API is blocked by their CORS policy.** 
 
@@ -64,7 +71,7 @@ We can overcome this by running an instance of Chrome with all security settings
 ```
 open -na Google\ Chrome --args --disable-web-security --user-data-dir=$HOME/profile-folder-name
 ```
-It opens a new chrome window with all security settings disabled. Next, we build the debug web version with our IDE. It opens a new window. Then we copy the localhost address of our flutter app. We try to lunch the address in the chrome instance with disabled security. The app should now work. 
+It opens a new chrome window with all security settings disabled. Next, we build the debug web version with our IDE. It opens a new window (don't close it). Then we copy the localhost address of our flutter app. We try to lunch the address in the chrome instance with disabled security. The app should now work. 
 
 **2. Of course the UI was not fully optimized for the web!** 
 
@@ -73,4 +80,4 @@ It opens a new chrome window with all security settings disabled. Next, we build
 - Select the location based on current user's location
 
 ## Known bugs
-1. When an network error occurs while in vertical orientation the settings button is still available to click (that's good), but when we have an error while in horizontal mode it is hidden (Minor inconvinience but still seems like something that needs to be corrected)
+1. When a network error occurs while in vertical orientation the settings button is still available to click (that's good), but when we have an error while in horizontal mode, it is hidden (minor inconvenience but still seems like something that needs to be corrected)
