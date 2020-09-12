@@ -6,6 +6,8 @@ import 'app_localizations.dart';
 
 List<Locale> supportedLocales = [
   const Locale('en', 'US'),
+  const Locale('de', 'DE'),
+  const Locale('pl', 'PL'),
 ];
 
 final List<LocalizationsDelegate> localizationDelegates = [

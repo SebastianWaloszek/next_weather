@@ -1,3 +1,127 @@
 {
-  "@@last_modified": "2020-09-09T08:18:58.472921"
+  "@@last_modified": "2020-09-12T08:44:01.444630",
+  "noInternetFound": "No internet connection found",
+  "@noInternetFound": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "unexpectedError": "An unexpected error occurred",
+  "@unexpectedError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "milesPerHour": "mph",
+  "@milesPerHour": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "kilometersPerHour": "km/h",
+  "@kilometersPerHour": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "centigradeUnit": "°C",
+  "@centigradeUnit": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "fahrenheitUnit": "°F",
+  "@fahrenheitUnit": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "degreeSign": "°",
+  "@degreeSign": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "percentageSign": "%",
+  "@percentageSign": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "hectopascals": "hPa",
+  "@hectopascals": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "humidity": "Humidity",
+  "@humidity": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pressure": "Pressure",
+  "@pressure": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "wind": "Wind",
+  "@wind": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "temperatureRange": "{min}{unit} / {max}{unit}",
+  "@temperatureRange": {
+    "type": "text",
+    "placeholders": {
+      "min": {},
+      "max": {},
+      "unit": {}
+    }
+  },
+  "tapToTryAgain": "Tap to try again",
+  "@tapToTryAgain": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Settings",
+  "@settings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "appearance": "Appearance",
+  "@appearance": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "theme": "Theme",
+  "@theme": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "system": "System",
+  "@system": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "lightTheme": "Light",
+  "@lightTheme": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "darkTheme": "Dark",
+  "@darkTheme": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "temperatureUnits": "Temperature units",
+  "@temperatureUnits": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "speedUnits": "Speed units",
+  "@speedUnits": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dataSourceDisclaimer": "Weather data provided by ",
+  "@dataSourceDisclaimer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dataSourceName": "MetaWeather.com",
+  "@dataSourceName": {
+    "type": "text",
+    "placeholders": {}
+  }
 }

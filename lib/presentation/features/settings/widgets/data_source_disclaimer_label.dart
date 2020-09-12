@@ -19,6 +19,7 @@ class DataSourceDisclaimerLabel extends StatelessWidget {
     return Container(
       margin: margin,
       child: RichText(
+        textAlign: TextAlign.center,
         text: TextSpan(
           children: [
             buildDisclaimerTextSpan(context),

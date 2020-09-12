@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/common/utils/extensions/date_time_extensions.dart';
+import 'package:flutter_next_weather/common/utils/extensions/string_extensions.dart';
 import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
 import 'package:flutter_next_weather/presentation/theme/app_text_styles.dart';
 import 'package:flutter_next_weather/presentation/theme/color/app_colors.dart';
@@ -44,7 +45,7 @@ class HomePageHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          weatherPrediction.day.dayOfWeek(),
+          weatherPrediction.day.dayOfWeek().capitalize(),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: AppTextStyles.headline3(context),

@@ -1,11 +1,11 @@
 {
   "@@last_modified": "2020-09-12T08:44:01.444630",
-  "noInternetFound": "No internet connection found",
+  "noInternetFound": "Nie znaleziono połączenia internetowego",
   "@noInternetFound": {
     "type": "text",
     "placeholders": {}
   },
-  "unexpectedError": "An unexpected error occured",
+  "unexpectedError": "Wystąpił nieoczekiwany błąd",
   "@unexpectedError": {
     "type": "text",
     "placeholders": {}
@@ -45,17 +45,17 @@
     "type": "text",
     "placeholders": {}
   },
-  "humidity": "Humidity",
+  "humidity": "Wilgotność",
   "@humidity": {
     "type": "text",
     "placeholders": {}
   },
-  "pressure": "Pressure",
+  "pressure": "Ciśnienie",
   "@pressure": {
     "type": "text",
     "placeholders": {}
   },
-  "wind": "Wind",
+  "wind": "Wiatr",
   "@wind": {
     "type": "text",
     "placeholders": {}
@@ -69,52 +69,52 @@
       "unit": {}
     }
   },
-  "tapToTryAgain": "Tap to try again",
+  "tapToTryAgain": "Naciśnij, by spróbować ponownie",
   "@tapToTryAgain": {
     "type": "text",
     "placeholders": {}
   },
-  "settings": "Settings",
+  "settings": "Ustawienia",
   "@settings": {
     "type": "text",
     "placeholders": {}
   },
-  "appearance": "Appearance",
+  "appearance": "Wygląd",
   "@appearance": {
     "type": "text",
     "placeholders": {}
   },
-  "theme": "Theme",
+  "theme": "Motyw",
   "@theme": {
     "type": "text",
     "placeholders": {}
   },
-  "system": "System",
+  "system": "Systemowy",
   "@system": {
     "type": "text",
     "placeholders": {}
   },
-  "lightTheme": "Light",
+  "lightTheme": "Jasny",
   "@lightTheme": {
     "type": "text",
     "placeholders": {}
   },
-  "darkTheme": "Dark",
+  "darkTheme": "Ciemny",
   "@darkTheme": {
     "type": "text",
     "placeholders": {}
   },
-  "temperatureUnits": "Temperature units",
+  "temperatureUnits": "Jednostka temperatury",
   "@temperatureUnits": {
     "type": "text",
     "placeholders": {}
   },
-  "speedUnits": "Speed units",
+  "speedUnits": "Jednostka prędkości",
   "@speedUnits": {
     "type": "text",
     "placeholders": {}
   },
-  "dataSourceDisclaimer": "Weather data provided by ",
+  "dataSourceDisclaimer": "Dane pogodowe dostarczone przez ",
   "@dataSourceDisclaimer": {
     "type": "text",
     "placeholders": {}

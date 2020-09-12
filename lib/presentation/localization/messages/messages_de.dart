@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a de locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -17,35 +17,35 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'de';
 
   static m0(min, max, unit) => "${min}${unit} / ${max}${unit}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "appearance" : MessageLookupByLibrary.simpleMessage("Appearance"),
+    "appearance" : MessageLookupByLibrary.simpleMessage("Optische"),
     "centigradeUnit" : MessageLookupByLibrary.simpleMessage("°C"),
-    "darkTheme" : MessageLookupByLibrary.simpleMessage("Dark"),
-    "dataSourceDisclaimer" : MessageLookupByLibrary.simpleMessage("Weather data provided by "),
+    "darkTheme" : MessageLookupByLibrary.simpleMessage("Dunkel"),
+    "dataSourceDisclaimer" : MessageLookupByLibrary.simpleMessage("Wetterdaten bereitgestellt von "),
     "dataSourceName" : MessageLookupByLibrary.simpleMessage("MetaWeather.com"),
     "degreeSign" : MessageLookupByLibrary.simpleMessage("°"),
     "fahrenheitUnit" : MessageLookupByLibrary.simpleMessage("°F"),
     "hectopascals" : MessageLookupByLibrary.simpleMessage("hPa"),
-    "humidity" : MessageLookupByLibrary.simpleMessage("Humidity"),
+    "humidity" : MessageLookupByLibrary.simpleMessage("Feuchtigkeit"),
     "kilometersPerHour" : MessageLookupByLibrary.simpleMessage("km/h"),
-    "lightTheme" : MessageLookupByLibrary.simpleMessage("Light"),
+    "lightTheme" : MessageLookupByLibrary.simpleMessage("Hell"),
     "milesPerHour" : MessageLookupByLibrary.simpleMessage("mph"),
-    "noInternetFound" : MessageLookupByLibrary.simpleMessage("No internet connection found"),
+    "noInternetFound" : MessageLookupByLibrary.simpleMessage("Keine Internetverbindung gefunden"),
     "percentageSign" : MessageLookupByLibrary.simpleMessage("%"),
-    "pressure" : MessageLookupByLibrary.simpleMessage("Pressure"),
-    "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
-    "speedUnits" : MessageLookupByLibrary.simpleMessage("Speed units"),
+    "pressure" : MessageLookupByLibrary.simpleMessage("Luftdruck"),
+    "settings" : MessageLookupByLibrary.simpleMessage("Einstellungen"),
+    "speedUnits" : MessageLookupByLibrary.simpleMessage("Geschwindigkeit"),
     "system" : MessageLookupByLibrary.simpleMessage("System"),
-    "tapToTryAgain" : MessageLookupByLibrary.simpleMessage("Tap to try again"),
+    "tapToTryAgain" : MessageLookupByLibrary.simpleMessage("Erneut versuchen"),
     "temperatureRange" : m0,
-    "temperatureUnits" : MessageLookupByLibrary.simpleMessage("Temperature units"),
-    "theme" : MessageLookupByLibrary.simpleMessage("Theme"),
-    "unexpectedError" : MessageLookupByLibrary.simpleMessage("An unexpected error occured"),
+    "temperatureUnits" : MessageLookupByLibrary.simpleMessage("Temperatur"),
+    "theme" : MessageLookupByLibrary.simpleMessage("Thema"),
+    "unexpectedError" : MessageLookupByLibrary.simpleMessage("Ein unerwarteter Fehler ist aufgetreten"),
     "wind" : MessageLookupByLibrary.simpleMessage("Wind")
   };
 }

@@ -30,9 +30,9 @@ class TemperatureRangeLabel extends StatelessWidget with GlobalSettings {
   Widget _buildText(BuildContext context) {
     return Text(
       AppLocalizations.of(context).temperatureRange(
-        min: settings.temperatureUnit.getValueFromCertigrade(temperature.min),
-        max: settings.temperatureUnit.getValueFromCertigrade(temperature.max),
-        unit: AppLocalizations.of(context).degreeSign(),
+        settings.temperatureUnit.getValueFromCertigrade(temperature.min),
+        settings.temperatureUnit.getValueFromCertigrade(temperature.max),
+        AppLocalizations.of(context).degreeSign(),
       ),
       style: textStyle,
     );

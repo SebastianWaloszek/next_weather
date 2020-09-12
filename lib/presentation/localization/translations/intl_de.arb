@@ -1,11 +1,11 @@
 {
   "@@last_modified": "2020-09-12T08:44:01.444630",
-  "noInternetFound": "No internet connection found",
+  "noInternetFound": "Keine Internetverbindung gefunden",
   "@noInternetFound": {
     "type": "text",
     "placeholders": {}
   },
-  "unexpectedError": "An unexpected error occured",
+  "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten",
   "@unexpectedError": {
     "type": "text",
     "placeholders": {}
@@ -45,12 +45,12 @@
     "type": "text",
     "placeholders": {}
   },
-  "humidity": "Humidity",
+  "humidity": "Feuchtigkeit",
   "@humidity": {
     "type": "text",
     "placeholders": {}
   },
-  "pressure": "Pressure",
+  "pressure": "Luftdruck",
   "@pressure": {
     "type": "text",
     "placeholders": {}
@@ -69,22 +69,22 @@
       "unit": {}
     }
   },
-  "tapToTryAgain": "Tap to try again",
+  "tapToTryAgain": "Erneut versuchen",
   "@tapToTryAgain": {
     "type": "text",
     "placeholders": {}
   },
-  "settings": "Settings",
+  "settings": "Einstellungen",
   "@settings": {
     "type": "text",
     "placeholders": {}
   },
-  "appearance": "Appearance",
+  "appearance": "Optische",
   "@appearance": {
     "type": "text",
     "placeholders": {}
   },
-  "theme": "Theme",
+  "theme": "Thema",
   "@theme": {
     "type": "text",
     "placeholders": {}
@@ -94,27 +94,27 @@
     "type": "text",
     "placeholders": {}
   },
-  "lightTheme": "Light",
+  "lightTheme": "Hell",
   "@lightTheme": {
     "type": "text",
     "placeholders": {}
   },
-  "darkTheme": "Dark",
+  "darkTheme": "Dunkel",
   "@darkTheme": {
     "type": "text",
     "placeholders": {}
   },
-  "temperatureUnits": "Temperature units",
+  "temperatureUnits": "Temperatur",
   "@temperatureUnits": {
     "type": "text",
     "placeholders": {}
   },
-  "speedUnits": "Speed units",
+  "speedUnits": "Geschwindigkeit",
   "@speedUnits": {
     "type": "text",
     "placeholders": {}
   },
-  "dataSourceDisclaimer": "Weather data provided by ",
+  "dataSourceDisclaimer": "Wetterdaten bereitgestellt von ",
   "@dataSourceDisclaimer": {
     "type": "text",
     "placeholders": {}

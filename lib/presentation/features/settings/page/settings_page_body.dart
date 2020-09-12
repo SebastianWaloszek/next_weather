@@ -5,6 +5,7 @@ import 'package:flutter_next_weather/presentation/features/settings/widgets/sect
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
 import 'package:flutter_next_weather/presentation/page/page_body.dart';
 import 'package:flutter_next_weather/presentation/page/scrollable_page_body_state.dart';
+import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
 import 'package:flutter_next_weather/presentation/widgets/header.dart';
 
 import 'states/mobile_settings_page_body_state.dart';
@@ -77,7 +78,10 @@ abstract class SettingsPageBodyState extends ScrollablePageBodyState<SettingsPag
   Widget buildDataSourceDisclaimerLabel() {
     return Center(
       child: DataSourceDisclaimerLabel(
-        margin: const EdgeInsets.symmetric(vertical: 30),
+        margin: const EdgeInsets.symmetric(
+          vertical: 30,
+          horizontal: AppThemeConstants.horizontalPagePadding,
+        ),
       ),
     );
   }
