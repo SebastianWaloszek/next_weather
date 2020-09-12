@@ -57,7 +57,7 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
 
   Widget _buildCustomScrollView() {
     return CustomScrollView(
-      physics: AlwaysScrollableScrollPhysics(),
+      physics: const AlwaysScrollableScrollPhysics(),
       slivers: [
         SliverFillRemaining(
           hasScrollBody: false,
@@ -78,11 +78,9 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
   Widget _buildScreenDependentForecast() {
     if (parameters.wasLoadedOnce) {
       return ScreenDependent(
-        wide: Container(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: _getPageBodyChildren(),
-          ),
+        wide: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: _getPageBodyChildren(),
         ),
         narrow: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -145,7 +143,7 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
   }
 
   Widget _buildDayWeatherPredictionList() {
-    final double size = 250;
+    const double size = 250;
     return Container(
       height: size,
       width: Device.isWidescreen(context) ? size : null,

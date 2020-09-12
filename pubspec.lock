@@ -259,6 +259,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  lint:
+    dependency: "direct dev"
+    description:
+      name: lint
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0"
+  linter:
+    dependency: "direct dev"
+    description:
+      name: linter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.118"
   logging:
     dependency: transitive
     description:

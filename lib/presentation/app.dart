@@ -55,9 +55,9 @@ class _MyAppState extends State<MyApp> {
 
   Widget _buildHome(bool settingsLoaded) {
     if (settingsLoaded) {
-      return HomePage();
+      return const HomePage();
     } else {
-      return Scaffold();
+      return const Scaffold();
     }
   }
 }

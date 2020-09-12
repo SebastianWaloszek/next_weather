@@ -6,8 +6,8 @@ import 'package:flutter_next_weather/presentation/theme/color/app_colors.dart';
 class NetworkErrorMessage extends StatelessWidget {
   static const double imageHeight = 113;
 
-  final title;
-  final subtitle;
+  final String title;
+  final String subtitle;
 
   final AssetImage image;
 

@@ -27,7 +27,7 @@ class _AnimatedCountState extends AnimatedWidgetBaseState<AnimatedNumberText> {
 
   @override
   Widget build(BuildContext context) {
-    return new Text(
+    return Text(
       '${_number.evaluate(animation)}',
       style: widget.textStyle,
     );
@@ -38,7 +38,7 @@ class _AnimatedCountState extends AnimatedWidgetBaseState<AnimatedNumberText> {
     _number = visitor(
       _number,
       widget.number,
-      (dynamic value) => new IntTween(begin: value),
+      (dynamic value) => IntTween(begin: value),
     );
   }
 }

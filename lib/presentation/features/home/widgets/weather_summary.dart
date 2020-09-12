@@ -59,7 +59,7 @@ class WeatherSummary extends StatelessWidget with GlobalSettings {
   Widget _buildWeatherStateImage() {
     return Expanded(
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: 215),
+        constraints: const BoxConstraints(maxHeight: 215),
         child: RectangularNetworkImage(
           margin: const EdgeInsets.only(left: 25),
           imageUrl: weatherPrediction.weather.state.imageUrl,

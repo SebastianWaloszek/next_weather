@@ -20,7 +20,7 @@ void main() {
 
   GetWeatherForecast getWeatherForecast;
   HomePageBloc bloc;
-  WeatherForecast weatherForecast = WeatherForecastModel.fromJson(fixture('api/location/2487956.json'));
+  final weatherForecast = WeatherForecastModel.fromJson(fixture('api/location/2487956.json'));
 
   final successLoadResult = SuccessResult<WeatherForecast, Failure>(weatherForecast);
   final failure = UnexpectedFailure();
@@ -42,7 +42,7 @@ void main() {
       return bloc.add(LoadHomePageEvent());
     },
     expect: [
-      LoadingHomePageState(),
+      const LoadingHomePageState(),
       LoadedHomePageState(weatherForecast, weatherForecast.weatherPredictions.first),
     ],
   );
@@ -57,7 +57,7 @@ void main() {
       return bloc.add(LoadHomePageEvent());
     },
     expect: [
-      LoadingHomePageState(),
+      const LoadingHomePageState(),
       FailedHomePageState(failure),
     ],
   );
@@ -87,7 +87,7 @@ void main() {
       return bloc.add(SelectWeatherPreditionEvent(weatherForecast.weatherPredictions.last));
     },
     expect: [
-      LoadingHomePageState(),
+      const LoadingHomePageState(),
       LoadedHomePageState(weatherForecast, weatherForecast.weatherPredictions.first),
       LoadedHomePageState(weatherForecast, weatherForecast.weatherPredictions.last),
     ],

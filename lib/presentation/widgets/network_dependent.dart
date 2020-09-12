@@ -33,7 +33,7 @@ class NetworkDependent extends StatelessWidget {
       cubit: Injector.resolve<NetworkBloc>(),
       builder: (context, state) {
         if (state is NetworkIsEvaluatingState && !disableLoadingIndicator) {
-          return LoadingIndicator();
+          return const LoadingIndicator();
         } else if (state is NetworkUnavailableState) {
           return _buildNetworkUnavailableMessage(context);
         } else if (state is UnexpectedNetworkErrorState) {

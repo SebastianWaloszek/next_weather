@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/presentation/theme/app_text_styles.dart';
+import 'package:flutter_next_weather/presentation/theme/color/app_colors.dart';
 import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
 
 class Header extends StatelessWidget {
@@ -42,7 +43,10 @@ class Header extends StatelessWidget {
 
   Widget _buildBackButton(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back_ios),
+      icon: Icon(
+        Icons.arrow_back_ios,
+        color: AppColors.primaryContent(context),
+      ),
       onPressed: () => Navigator.of(context).pop(),
     );
   }

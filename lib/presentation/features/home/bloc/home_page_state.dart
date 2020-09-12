@@ -28,7 +28,7 @@ class LoadingHomePageState extends HomePageState {
 }
 
 class LoadedHomePageState extends HomePageState {
-  LoadedHomePageState(WeatherForecast weatherForecast, WeatherPrediction selectedWeatherPrediction)
+  const LoadedHomePageState(WeatherForecast weatherForecast, WeatherPrediction selectedWeatherPrediction)
       : super(
           weatherForecast: weatherForecast,
           selectedWeatherPrediction: selectedWeatherPrediction,
@@ -44,5 +44,5 @@ class LoadedHomePageState extends HomePageState {
 class FailedHomePageState extends HomePageState {
   final Failure failure;
 
-  FailedHomePageState(this.failure);
+  const FailedHomePageState(this.failure);
 }

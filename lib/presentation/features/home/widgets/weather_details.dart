@@ -25,12 +25,12 @@ class WeatherDetails extends StatelessWidget with GlobalSettings {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: _buildScrollContent(context),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: AppThemeConstants.horizontalPagePadding,
         vertical: verticalPadding,
       ),
       decoration: _buildDecoration(context),
+      child: _buildScrollContent(context),
     );
   }
 

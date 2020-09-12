@@ -46,7 +46,7 @@ class WeatherDetail extends StatelessWidget {
 
   Widget _buildValueTextContainer(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10),
       child: AnimatedUnitNumberText(
         value: value,
         valueUnit: valueUnit,

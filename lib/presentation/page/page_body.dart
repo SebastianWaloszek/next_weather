@@ -12,6 +12,7 @@ abstract class PageBody<P extends PageBodyParameters> extends StatefulWidget {
   State createWebState();
 
   @override
+  // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() {
     if (kIsWeb) {
       return createWebState();

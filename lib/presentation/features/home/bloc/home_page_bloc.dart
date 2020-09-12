@@ -15,7 +15,7 @@ part 'home_page_state.dart';
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   static const int cityWoeId = 638242; // TODO: Replace Berlin woeId placeholder
 
-  static HomePageState get initialState => LoadingHomePageState();
+  static HomePageState get initialState => const LoadingHomePageState();
 
   final GetWeatherForecast getWeatherForecast;
 

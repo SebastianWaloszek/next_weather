@@ -33,7 +33,7 @@ class HomePageHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        weatherPrediction != null ? _buildDayText(context) : Container(),
+        if (weatherPrediction != null) _buildDayText(context) else Container(),
         _buildSettingsIcon(context),
       ],
     );

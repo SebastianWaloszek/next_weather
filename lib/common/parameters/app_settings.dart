@@ -65,7 +65,7 @@ class AppSettings extends Equatable {
     }
     final jsonMap = json.decode(jsonString) as Map<dynamic, dynamic>;
     final Map<String, String> settingsMap = Map<String, String>.from(jsonMap);
-    final defaultSettings = AppSettings.defaultSettings();
+    const defaultSettings = AppSettings.defaultSettings();
     return AppSettings(
       themeMode: _themeModeFromString(settingsMap[themeKey]) ?? defaultSettings.themeMode,
       temperatureUnit:

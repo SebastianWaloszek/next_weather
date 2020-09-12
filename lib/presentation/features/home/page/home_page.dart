@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> with RefreshablePage {
   }
 
   void _changeLocation() {
-//TODO: Implement such functionality in the future
+    //TODO: Implement such functionality in the future
   }
 
   void _selectWeatherPredition(WeatherPrediction weatherPrediction) {

@@ -34,7 +34,7 @@ class DayWeatherPredictionCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return RoundedShadowContainer(
       height: size,
-      padding: EdgeInsets.all(cellPadding),
+      padding: const EdgeInsets.all(cellPadding),
       width: size,
       color: isSelected ? AppColors.secondaryAccent(context) : AppColors.secondaryBackground(context),
       onTapped: () => onSelected(weatherPrediction),

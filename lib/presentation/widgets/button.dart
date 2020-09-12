@@ -28,7 +28,7 @@ class Button extends StatelessWidget {
       width: width,
       child: MaterialButton(
         height: height,
-        padding: EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         shape: RoundedRectangleBorder(borderRadius: AppThemeConstants.borderRadius),
         color: AppColors.secondaryBackground(context),
         onPressed: onTapped,
