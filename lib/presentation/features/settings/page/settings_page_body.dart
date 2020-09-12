@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_page_body_parameters.dart';
+import 'package:flutter_next_weather/presentation/features/settings/widgets/app_version_label.dart';
 import 'package:flutter_next_weather/presentation/features/settings/widgets/data_source_disclaimer_label.dart';
 import 'package:flutter_next_weather/presentation/features/settings/widgets/section/appearance_settings_section.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
@@ -83,6 +84,16 @@ abstract class SettingsPageBodyState extends ScrollablePageBodyState<SettingsPag
           horizontal: AppThemeConstants.horizontalPagePadding,
         ),
       ),
+    );
+  }
+
+  Widget buildAppVersionLabel() {
+    return Container(
+      margin: const EdgeInsets.only(
+        right: AppThemeConstants.horizontalPagePadding,
+        top: 20,
+      ),
+      child: const AppVersionLabel(),
     );
   }
 }

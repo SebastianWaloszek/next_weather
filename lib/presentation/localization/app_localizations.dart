@@ -164,4 +164,10 @@ class AppLocalizations {
         'MetaWeather.com',
         name: 'dataSourceName',
       );
+
+  String appVersion(String version) => Intl.message(
+        'v. $version',
+        name: 'appVersion',
+        args: [version],
+      );
 }

@@ -5,6 +5,7 @@ class MobileSettingsPageBodyState extends SettingsPageBodyState {
   @override
   List<Widget> buildSections() => [
         buildAppearanceSection(),
+        buildAppVersionLabel(),
         buildDataSourceDisclaimerLabel(),
       ];
 }

@@ -123,5 +123,12 @@
   "@dataSourceName": {
     "type": "text",
     "placeholders": {}
+  },
+  "appVersion": "v. {version}",
+  "@appVersion": {
+    "type": "text",
+    "placeholders": {
+      "version": {}
+    }
   }
 }

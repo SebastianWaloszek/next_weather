@@ -1,11 +1,11 @@
 {
-  "@@last_modified": "2020-09-12T08:44:01.444630",
+  "@@last_modified": "2020-09-12T09:24:43.338016",
   "noInternetFound": "No internet connection found",
   "@noInternetFound": {
     "type": "text",
     "placeholders": {}
   },
-  "unexpectedError": "An unexpected error occured",
+  "unexpectedError": "An unexpected error occurred",
   "@unexpectedError": {
     "type": "text",
     "placeholders": {}
@@ -123,5 +123,12 @@
   "@dataSourceName": {
     "type": "text",
     "placeholders": {}
+  },
+  "appVersion": "v. {version}",
+  "@appVersion": {
+    "type": "text",
+    "placeholders": {
+      "version": {}
+    }
   }
 }
