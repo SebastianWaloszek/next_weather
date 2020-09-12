@@ -46,23 +46,25 @@ class WeatherDetails extends StatelessWidget with GlobalSettings {
   }
 
   Widget _buildScrollContent(BuildContext context) {
-    return ScreenDependent(
-      wide: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: WeatherDetailFactory.getWeatherDetails(
-          context,
-          weather: weather,
-          windSpeedUnit: settings.windSpeedUnit,
+    return settingsBuilder(childBuilder: (settings) {
+      return ScreenDependent(
+        wide: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: WeatherDetailFactory.getWeatherDetails(
+            context,
+            weather: weather,
+            windSpeedUnit: settings.windSpeedUnit,
+          ),
         ),
-      ),
-      narrow: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: WeatherDetailFactory.getWeatherDetails(
-          context,
-          weather: weather,
-          windSpeedUnit: settings.windSpeedUnit,
+        narrow: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: WeatherDetailFactory.getWeatherDetails(
+            context,
+            weather: weather,
+            windSpeedUnit: settings.windSpeedUnit,
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

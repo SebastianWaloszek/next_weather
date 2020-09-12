@@ -28,13 +28,17 @@ class TemperatureRangeLabel extends StatelessWidget with GlobalSettings {
   }
 
   Widget _buildText(BuildContext context) {
-    return Text(
-      AppLocalizations.of(context).temperatureRange(
-        settings.temperatureUnit.getValueFromCertigrade(temperature.min),
-        settings.temperatureUnit.getValueFromCertigrade(temperature.max),
-        AppLocalizations.of(context).degreeSign(),
-      ),
-      style: textStyle,
+    return settingsBuilder(
+      childBuilder: (settings) {
+        return Text(
+          AppLocalizations.of(context).temperatureRange(
+            settings.temperatureUnit.getValueFromCertigrade(temperature.min),
+            settings.temperatureUnit.getValueFromCertigrade(temperature.max),
+            AppLocalizations.of(context).degreeSign(),
+          ),
+          style: textStyle,
+        );
+      },
     );
   }
 }

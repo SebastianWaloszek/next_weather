@@ -92,12 +92,16 @@ class WeatherSummary extends StatelessWidget with GlobalSettings {
   }
 
   Widget _buildTemperatureText(BuildContext context) {
-    return AnimatedUnitNumberText(
-      value: settings.temperatureUnit.getValueFromCertigrade(weatherPrediction.weather.temperature.average),
-      valueUnit: AppLocalizations.of(context).degreeSign(),
-      valueTextStyle: AppTextStyles.headline1(context),
-      valueUnitTextStyle: AppTextStyles.headline2(context),
-      unitLeftMargin: 0,
+    return settingsBuilder(
+      childBuilder: (settings) {
+        return AnimatedUnitNumberText(
+          value: settings.temperatureUnit.getValueFromCertigrade(weatherPrediction.weather.temperature.average),
+          valueUnit: AppLocalizations.of(context).degreeSign(),
+          valueTextStyle: AppTextStyles.headline1(context),
+          valueUnitTextStyle: AppTextStyles.headline2(context),
+          unitLeftMargin: 0,
+        );
+      },
     );
   }
 
