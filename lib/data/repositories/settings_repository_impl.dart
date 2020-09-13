@@ -1,5 +1,5 @@
 import 'package:flutter_next_weather/common/error/failure.dart';
-import 'package:flutter_next_weather/common/parameters/app_settings.dart';
+import 'package:flutter_next_weather/domain/entities/app_settings.dart';
 import 'package:flutter_next_weather/common/result/result.dart';
 import 'package:flutter_next_weather/data/data_sources/settings_data_source.dart';
 import 'package:flutter_next_weather/domain/repositories/settings_repository.dart';

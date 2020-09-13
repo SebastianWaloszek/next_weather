@@ -10,7 +10,7 @@ abstract class SettingsState extends Equatable {
 }
 
 class InitialSettingsState extends SettingsState {
-  const InitialSettingsState() : super(settings: const AppSettings.defaultSettings());
+  const InitialSettingsState() : super(settings: const AppSettingsModel.defaultSettings());
 }
 
 class LoadedSettingsState extends SettingsState {

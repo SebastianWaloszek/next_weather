@@ -1,5 +1,6 @@
 import 'package:flutter_next_weather/common/error/failure.dart';
-import 'package:flutter_next_weather/common/parameters/app_settings.dart';
+import 'package:flutter_next_weather/data/models/app_settings_model.dart';
+import 'package:flutter_next_weather/domain/entities/app_settings.dart';
 import 'package:flutter_next_weather/common/result/failure_result.dart';
 import 'package:flutter_next_weather/common/result/result.dart';
 import 'package:flutter_next_weather/common/result/success_result.dart';
@@ -15,7 +16,7 @@ class LocalSettingsDataSource implements SettingsDataSource {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       final json = sharedPreferences.getString(_settingsKey);
-      final settings = AppSettings.fromJson(json);
+      final settings = AppSettingsModel.fromJson(json);
       if (settings != null) {
         return SuccessResult<AppSettings, Failure>(settings);
       }

@@ -5,7 +5,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_next_weather/common/parameters/app_settings.dart';
+import 'package:flutter_next_weather/data/models/app_settings_model.dart';
+import 'package:flutter_next_weather/domain/entities/app_settings.dart';
 import 'package:flutter_next_weather/domain/entities/speed_unit.dart';
 import 'package:flutter_next_weather/domain/entities/temperature_unit.dart';
 import 'package:flutter_next_weather/domain/use_cases/settings/load_settings.dart';
@@ -58,7 +59,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       },
       onFailure: (_) async* {
         // In the case of no custom settings specified or error => load default settings.
-        yield* newLoadedState(const AppSettings.defaultSettings());
+        yield* newLoadedState(const AppSettingsModel.defaultSettings());
       },
     );
   }
@@ -83,7 +84,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         yield* newLoadedState(settings);
       },
       onFailure: (_) async* {
-        yield* newLoadedState(const AppSettings.defaultSettings());
+        yield* newLoadedState(const AppSettingsModel.defaultSettings());
       },
     );
   }

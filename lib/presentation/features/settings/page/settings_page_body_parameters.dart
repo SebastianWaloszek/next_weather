@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_next_weather/common/parameters/app_settings.dart';
+import 'package:flutter_next_weather/domain/entities/app_settings.dart';
 import 'package:flutter_next_weather/presentation/page/page_body_parameters.dart';
 
 class SettingsPageBodyParameters extends PageBodyParameters {

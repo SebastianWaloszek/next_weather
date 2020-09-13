@@ -20,7 +20,7 @@ void main() {
 
   GetWeatherForecast getWeatherForecast;
   HomePageBloc bloc;
-  final weatherForecast = WeatherForecastModel.fromJson(fixture('api/location/2487956.json'));
+  final weatherForecast = WeatherForecastModel.fromJson(fixture('api/location/638242.json'));
 
   final successLoadResult = SuccessResult<WeatherForecast, Failure>(weatherForecast);
   final failure = UnexpectedFailure();

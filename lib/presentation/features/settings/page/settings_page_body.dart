@@ -77,9 +77,9 @@ abstract class SettingsPageBodyState extends ScrollablePageBodyState<SettingsPag
   }
 
   Widget buildDataSourceDisclaimerLabel() {
-    return Center(
+    return const Center(
       child: DataSourceDisclaimerLabel(
-        margin: const EdgeInsets.symmetric(
+        margin: EdgeInsets.symmetric(
           vertical: 30,
           horizontal: AppThemeConstants.horizontalPagePadding,
         ),

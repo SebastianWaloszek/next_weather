@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_next_weather/common/parameters/app_settings.dart';
+import 'package:flutter_next_weather/domain/entities/app_settings.dart';
 import 'package:flutter_next_weather/common/utils/injector.dart';
 import 'package:flutter_next_weather/presentation/features/settings/bloc/settings_bloc.dart';
 
