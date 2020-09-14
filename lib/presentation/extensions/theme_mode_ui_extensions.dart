@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_option.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
 
-extension ThemeModeExtensions on ThemeMode {
+extension ThemeModeUiExtensions on ThemeMode {
   SettingsPickerOption toSettingsOption(BuildContext context) {
     return SettingsPickerOption<ThemeMode>(
       value: this,

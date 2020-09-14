@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/domain/entities/speed_unit.dart';
 import 'package:flutter_next_weather/domain/entities/temperature_unit.dart';
+import 'package:flutter_next_weather/presentation/extensions/speed_unit_ui_extensions.dart';
+import 'package:flutter_next_weather/presentation/extensions/temperature_unit_ui_extensions.dart';
 import 'package:flutter_next_weather/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_option.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
-import 'package:flutter_next_weather/common/utils/extensions/theme_mode_extensions.dart';
+import 'package:flutter_next_weather/presentation/extensions/theme_mode_ui_extensions.dart';
 import 'package:meta/meta.dart';
 
 class SettingsPickerPageArguments {
