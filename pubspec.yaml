@@ -44,9 +44,6 @@ flutter:
     - resources/fonts/
     - resources/graphics/
     - resources/graphics/images/
-    - resources/json/
-    - resources/json/api/
-    - resources/json/api/location/
 
   fonts:
     - family: Roboto

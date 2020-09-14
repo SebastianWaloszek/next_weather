@@ -56,7 +56,7 @@ void main() {
     when(otherRequest.method).thenReturn(HttpMethod.get);
     when(otherRequest.path).thenReturn('path');
     request = GetWeatherForecastRequest(638242);
-    tokenResponse = Response(data: fixture('api/location/638242.json'), statusCode: 200);
+    tokenResponse = Response(data: fixture('weather_forecast.json'), statusCode: 200);
     when(networkInfo.isConnected).thenAnswer((_) async => true);
   });
 
