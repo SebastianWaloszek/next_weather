@@ -4,14 +4,13 @@ import 'package:flutter_next_weather/common/environment/environment_dev.dart';
 import 'package:flutter_next_weather/common/error/failure.dart';
 import 'package:flutter_next_weather/common/result/failure_result.dart';
 import 'package:flutter_next_weather/common/result/success_result.dart';
-import 'package:flutter_next_weather/data/models/weather_forecast_model.dart';
 import 'package:flutter_next_weather/domain/entities/weather_forecast.dart';
 import 'package:flutter_next_weather/domain/use_cases/weather/get_weather_forecast.dart';
 import 'package:flutter_next_weather/presentation/features/home/bloc/home_page_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../../../utils/test_data.dart';
 
 class GetWeatherForecastMock extends Mock implements GetWeatherForecast {}
 
@@ -20,7 +19,7 @@ void main() {
 
   GetWeatherForecast getWeatherForecast;
   HomePageBloc bloc;
-  final weatherForecast = WeatherForecastModel.fromJson(fixture('api/location/638242.json'));
+  final weatherForecast = TestData.weatherForecast;
 
   final successLoadResult = SuccessResult<WeatherForecast, Failure>(weatherForecast);
   final failure = UnexpectedFailure();
