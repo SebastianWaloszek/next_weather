@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/domain/entities/location.dart';
-import 'package:flutter_next_weather/domain/entities/temperature_unit.dart';
 import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
 import 'package:flutter_next_weather/presentation/extensions/temperature_unit_ui_extensions.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';

@@ -15,12 +15,12 @@ extension SpeedUnitUiExtensions on SpeedUnit {
     }
   }
 
-  double getValueFromMilesPerHour(double milesPerhour) {
+  int getValueFromMilesPerHour(double milesPerhour) {
     switch (this) {
       case SpeedUnit.milesPerHour:
-        return milesPerhour;
+        return milesPerhour.floor();
       case SpeedUnit.kilometersPerHour:
-        return milesPerhour * 1.61;
+        return (milesPerhour * 1.61).floor();
       default:
         throw UnsupportedError('$this is not supported');
     }

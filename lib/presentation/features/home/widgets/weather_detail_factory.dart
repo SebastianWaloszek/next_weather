@@ -42,7 +42,7 @@ abstract class WeatherDetailFactory with GlobalSettings {
   static Widget _buildWindDetail(BuildContext context, Weather weather, SpeedUnit windSpeedUnit) {
     return WeatherDetail(
       title: AppLocalizations.of(context).wind(),
-      value: windSpeedUnit.getValueFromMilesPerHour(weather.windSpeed.value).floor(),
+      value: windSpeedUnit.getValueFromMilesPerHour(weather.windSpeed.value),
       valueUnit: windSpeedUnit.getDescription(context),
     );
   }
