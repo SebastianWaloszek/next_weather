@@ -11,6 +11,7 @@ import 'package:flutter_next_weather/data/data_sources/settings_data_source.dart
 import 'package:flutter_next_weather/data/data_sources/weather_data_source.dart';
 import 'package:flutter_next_weather/data/network/network_info.dart';
 import 'package:flutter_next_weather/data/network/network_service.dart';
+import 'package:flutter_next_weather/data/network/managed_network_service.dart';
 import 'package:flutter_next_weather/data/network/network_service_impl.dart';
 import 'package:flutter_next_weather/data/network/web_network_info.dart';
 import 'package:flutter_next_weather/data/repositories/settings_repository_impl.dart';
@@ -75,9 +76,14 @@ class Injector {
     );
 
     container.registerSingleton<NetworkService>(
-      (c) => NetworkServiceImpl(
+      (c) => NetworkServiceImpl(dio: c.resolve()),
+      name: 'networkServiceImpl',
+    );
+
+    container.registerSingleton<NetworkService>(
+      (c) => ManagedNetworkService(
         networkInfo: c.resolve(),
-        dio: c.resolve(),
+        networkService: c.resolve('networkServiceImpl'),
         networkBloc: c.resolve(),
       ),
     );

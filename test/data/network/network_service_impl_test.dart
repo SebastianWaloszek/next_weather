@@ -7,6 +7,7 @@ import 'package:flutter_next_weather/common/result/failure_result.dart';
 import 'package:flutter_next_weather/common/result/success_result.dart';
 import 'package:flutter_next_weather/data/network/http_method.dart';
 import 'package:flutter_next_weather/data/network/network_info.dart';
+import 'package:flutter_next_weather/data/network/managed_network_service.dart';
 import 'package:flutter_next_weather/data/network/network_service_impl.dart';
 import 'package:flutter_next_weather/data/network/request.dart';
 import 'package:flutter_next_weather/data/network/request_exceptions.dart';
@@ -37,7 +38,8 @@ void main() {
   // ignore: close_sinks
   NetworkBloc networkBloc;
 
-  NetworkServiceImpl networkService;
+  NetworkServiceImpl networkServiceImpl;
+  ManagedNetworkService managedNetworkService;
 
   GetWeatherForecastRequest request;
   Request otherRequest;
@@ -47,10 +49,13 @@ void main() {
     dio = DioMock();
     networkInfo = NetworkInfoMock();
     networkBloc = NetworkBlocMock();
-    networkService = NetworkServiceImpl(
-      networkInfo: networkInfo,
+    networkServiceImpl = NetworkServiceImpl(
       dio: dio,
+    );
+    managedNetworkService = ManagedNetworkService(
       networkBloc: networkBloc,
+      networkInfo: networkInfo,
+      networkService: networkServiceImpl,
     );
     otherRequest = RequestMock();
     when(otherRequest.method).thenReturn(HttpMethod.get);
@@ -69,7 +74,7 @@ void main() {
       data: anyNamed('data'),
     )).thenAnswer((_) async => tokenResponse);
     // Act
-    final result = await networkService.make(request);
+    final result = await managedNetworkService.make(request);
     // Expect
     final capturedEvents = verify(networkBloc.add(captureAny)).captured;
     expect(capturedEvents[0] is NetworkIsEvaluatingEvent, isTrue);
@@ -86,7 +91,7 @@ void main() {
       data: anyNamed('data'),
     )).thenThrow(ConnectionException(''));
     // Act
-    final result = await networkService.make(request);
+    final result = await managedNetworkService.make(request);
     // Expect
     final capturedEvents = verify(networkBloc.add(captureAny)).captured;
     expect(capturedEvents[0] is NetworkIsEvaluatingEvent, isTrue);
@@ -99,7 +104,7 @@ void main() {
     // Build
     when(networkInfo.isConnected).thenAnswer((_) async => false);
     // Act
-    final result = await networkService.make(request);
+    final result = await managedNetworkService.make(request);
     // Expect
     final capturedEvent = verify(networkBloc.add(captureAny)).captured.single;
     expect(capturedEvent is NetworkIsUnavailableEvent, isTrue);
@@ -116,7 +121,7 @@ void main() {
       data: anyNamed('data'),
     )).thenThrow(Exception());
     // Act
-    final result = await networkService.make(request);
+    final result = await managedNetworkService.make(request);
     // Expect
     final capturedEvents = verify(networkBloc.add(captureAny)).captured;
     expect(capturedEvents[0] is NetworkIsEvaluatingEvent, isTrue);
