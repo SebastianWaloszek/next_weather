@@ -33,6 +33,8 @@ void main() {
 
     expect(button.onTapped, onTapped);
 
+    expect(onTapCalled, isFalse);
+
     await tester.tap(buttonFinder);
     await tester.pump();
 

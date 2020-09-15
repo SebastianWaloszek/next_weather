@@ -34,6 +34,8 @@ void main() {
     );
     await tester.pumpAndSettle();
 
+    expect(onTapCalled, isFalse);
+
     await tester.tap(find.byType(RoundedShadowContainer));
     await tester.pump();
 

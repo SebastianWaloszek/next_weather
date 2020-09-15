@@ -62,6 +62,8 @@ void main() {
     );
     await tester.pumpAndSettle();
 
+    expect(onSelectedCalled, isFalse);
+
     await tester.tap(find.byType(SettingsRow));
     await tester.pump();
 

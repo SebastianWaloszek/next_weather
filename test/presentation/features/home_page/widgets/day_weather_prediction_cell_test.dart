@@ -69,9 +69,11 @@ void main() {
     );
     await tester.pumpAndSettle();
 
+    expect(onTapCalled, isFalse);
+
     await tester.tap(find.byType(DayWeatherPredictionCell));
     await tester.pump();
 
-    expect(onTapCalled, true);
+    expect(onTapCalled, isTrue);
   });
 }
