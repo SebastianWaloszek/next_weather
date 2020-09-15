@@ -1,53 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_next_weather/common/blocs/network/network_bloc.dart';
-import 'package:flutter_next_weather/common/utils/injector.dart';
+import 'package:flutter_next_weather/common/error/failure.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
 import 'package:flutter_next_weather/presentation/widgets/network_error_message.dart';
-import 'package:flutter_next_weather/presentation/widgets/loading_indicator.dart';
 
-/// This widget handles network dependent errors with a dedicated error view.
-class NetworkDependent extends StatelessWidget {
-  /// Widget to be drawn when no network errors occur.
+/// This widget handles failures with a dedicated error view.
+class FailureDependent extends StatelessWidget {
+  /// Widget to be drawn when no errors occur.
   final Widget child;
 
-  final bool disableLoadingIndicator;
+  final Failure failure;
 
-  /// Function to be executed when network becomes available again
-  /// or user wishes to retry the request upon an unexpected error.
-  final void Function() onNetworkRetry;
+  /// Function to be executed when user wishes to retry the request upon an unexpected error.
+  final void Function() onRetry;
 
-  const NetworkDependent({
+  const FailureDependent({
     Key key,
     @required this.child,
-    this.disableLoadingIndicator,
-    this.onNetworkRetry,
+    this.failure,
+    this.onRetry,
   })  : assert(child != null),
         super(key: key);
 
   @override
-  Widget build(BuildContext context) => _buildBlocBuilder();
-
-  Widget _buildBlocBuilder() {
-    return BlocBuilder<NetworkBloc, NetworkState>(
-      cubit: Injector.resolve<NetworkBloc>(),
-      builder: (context, state) {
-        if (state is NetworkIsEvaluatingState && !disableLoadingIndicator) {
-          return const LoadingIndicator();
-        } else if (state is NetworkUnavailableState) {
-          return _buildNetworkUnavailableMessage(context);
-        } else if (state is UnexpectedNetworkErrorState) {
-          return _buildUnexpectedErrorMessage(context);
-        } else {
-          return child;
-        }
-      },
-    );
+  Widget build(BuildContext context) {
+    switch (failure.runtimeType) {
+      case NetworkFailure:
+        return _buildNetworkUnavailableMessage(context);
+      case UnexpectedFailure:
+        return _buildUnexpectedErrorMessage(context);
+      default:
+        return child;
+    }
   }
 
   Widget _buildNetworkUnavailableMessage(BuildContext context) {
     return _buildErrorMessage(
-      onTap: onNetworkRetry,
+      onTap: onRetry,
       title: AppLocalizations.of(context).noInternetFound(),
       subtitle: AppLocalizations.of(context).tapToTryAgain(),
     );
@@ -55,7 +43,7 @@ class NetworkDependent extends StatelessWidget {
 
   Widget _buildUnexpectedErrorMessage(BuildContext context) {
     return _buildErrorMessage(
-      onTap: onNetworkRetry,
+      onTap: onRetry,
       title: AppLocalizations.of(context).unexpectedError(),
       subtitle: AppLocalizations.of(context).tapToTryAgain(),
     );

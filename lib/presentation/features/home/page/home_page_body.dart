@@ -10,6 +10,7 @@ import 'package:flutter_next_weather/presentation/page/page_body.dart';
 import 'package:flutter_next_weather/presentation/page/scrollable_page_body_state.dart';
 import 'package:flutter_next_weather/presentation/theme/device.dart';
 import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
+import 'package:flutter_next_weather/presentation/widgets/loading_indicator.dart';
 import 'package:flutter_next_weather/presentation/widgets/network_dependent.dart';
 import 'package:flutter_next_weather/presentation/widgets/screen_dependent.dart';
 
@@ -70,11 +71,15 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
   }
 
   Widget _buildWeatherForecast() {
-    return NetworkDependent(
-      disableLoadingIndicator: parameters.wasLoadedOnce,
-      onNetworkRetry: parameters.loadWeatherForecast,
-      child: _buildScreenDependentForecast(),
-    );
+    if (parameters.isLoading && !parameters.wasLoadedOnce) {
+      return const LoadingIndicator();
+    } else {
+      return FailureDependent(
+        failure: parameters.failure,
+        onRetry: parameters.loadWeatherForecast,
+        child: _buildScreenDependentForecast(),
+      );
+    }
   }
 
   Widget _buildScreenDependentForecast() {

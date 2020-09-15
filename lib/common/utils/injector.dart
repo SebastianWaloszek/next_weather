@@ -1,7 +1,6 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_next_weather/common/blocs/network/network_bloc.dart';
 import 'package:flutter_next_weather/common/environment/environment.dart';
 import 'package:flutter_next_weather/common/environment/environment_dev.dart';
 import 'package:flutter_next_weather/common/environment/environment_prod.dart';
@@ -84,7 +83,6 @@ class Injector {
       (c) => ManagedNetworkService(
         networkInfo: c.resolve(),
         networkService: c.resolve('networkServiceImpl'),
-        networkBloc: c.resolve(),
       ),
     );
 
@@ -106,7 +104,6 @@ class Injector {
     container.registerSingleton((c) => SaveSettings(settingsRepository: c.resolve()));
     container.registerSingleton((c) => GetWeatherForecast(weatherRepository: c.resolve()));
 
-    container.registerSingleton((c) => NetworkBloc());
     container.registerSingleton(
       (c) => SettingsBloc(
         loadSettings: c.resolve(),

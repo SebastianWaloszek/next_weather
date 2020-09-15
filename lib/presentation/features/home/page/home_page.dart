@@ -89,6 +89,8 @@ class _HomePageState extends State<HomePage> with RefreshablePage {
         wasLoadedOnce: wasLoadedOnce,
         refreshCompleter: refreshCompleter,
         changeLocation: _changeLocation,
+        isLoading: state is LoadingHomePageState,
+        failure: state.failure,
       ),
     );
   }

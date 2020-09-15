@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_next_weather/common/blocs/network/network_bloc.dart';
 import 'package:flutter_next_weather/common/environment/environment.dart';
 import 'package:flutter_next_weather/common/environment/environment_dev.dart';
 import 'package:flutter_next_weather/common/error/failure.dart';
@@ -18,8 +17,6 @@ import '../../fixtures/fixture_reader.dart';
 
 class NetworkInfoMock extends Mock implements NetworkInfo {}
 
-class NetworkBlocMock extends Mock implements NetworkBloc {}
-
 class DioMock extends Mock implements Dio {}
 
 class RequestMock extends Mock implements Request {}
@@ -36,7 +33,6 @@ void main() {
   NetworkInfo networkInfo;
   Dio dio;
   // ignore: close_sinks
-  NetworkBloc networkBloc;
 
   NetworkServiceImpl networkServiceImpl;
   ManagedNetworkService managedNetworkService;
@@ -48,12 +44,10 @@ void main() {
   setUp(() {
     dio = DioMock();
     networkInfo = NetworkInfoMock();
-    networkBloc = NetworkBlocMock();
     networkServiceImpl = NetworkServiceImpl(
       dio: dio,
     );
     managedNetworkService = ManagedNetworkService(
-      networkBloc: networkBloc,
       networkInfo: networkInfo,
       networkService: networkServiceImpl,
     );
@@ -76,13 +70,10 @@ void main() {
     // Act
     final result = await managedNetworkService.make(request);
     // Expect
-    final capturedEvents = verify(networkBloc.add(captureAny)).captured;
-    expect(capturedEvents[0] is NetworkIsEvaluatingEvent, isTrue);
-    expect(capturedEvents[1] is NetworkIsAvailableEvent, isTrue);
     expect(result is SuccessResult, isTrue);
   });
 
-  test('Should add event to bloc on ConnectionException & return FailureResult with NetworkFailure', () async {
+  test('Should return a failure result with NetworkFailure', () async {
     // Build
     when(dio.request(
       any,
@@ -93,26 +84,21 @@ void main() {
     // Act
     final result = await managedNetworkService.make(request);
     // Expect
-    final capturedEvents = verify(networkBloc.add(captureAny)).captured;
-    expect(capturedEvents[0] is NetworkIsEvaluatingEvent, isTrue);
-    expect(capturedEvents[1] is NetworkIsUnavailableEvent, isTrue);
     expect(result is FailureResult, isTrue);
     result.fold(onFailure: (failure) => expect(failure is NetworkFailure, isTrue), onSuccess: (_) => {});
   });
 
-  test('Should add event to bloc on network not connected & return FailureResult with NetworkFailure', () async {
+  test('Should return a failure result with NetworkFailure on network not connected', () async {
     // Build
     when(networkInfo.isConnected).thenAnswer((_) async => false);
     // Act
     final result = await managedNetworkService.make(request);
     // Expect
-    final capturedEvent = verify(networkBloc.add(captureAny)).captured.single;
-    expect(capturedEvent is NetworkIsUnavailableEvent, isTrue);
     expect(result is FailureResult, isTrue);
     result.fold(onFailure: (failure) => expect(failure is NetworkFailure, isTrue), onSuccess: (_) => {});
   });
 
-  test('Should add event to bloc on Exception & return FailureResult with UnexpectedFailure', () async {
+  test('Should return a failure result with UnexpectedFailure on Exception', () async {
     // Build
     when(dio.request(
       any,
@@ -123,9 +109,6 @@ void main() {
     // Act
     final result = await managedNetworkService.make(request);
     // Expect
-    final capturedEvents = verify(networkBloc.add(captureAny)).captured;
-    expect(capturedEvents[0] is NetworkIsEvaluatingEvent, isTrue);
-    expect(capturedEvents[1] is UnexpectedNetworkErrorEvent, isTrue);
     expect(result is FailureResult, isTrue);
     result.fold(onFailure: (failure) => expect(failure is UnexpectedFailure, isTrue), onSuccess: (_) => {});
   });
