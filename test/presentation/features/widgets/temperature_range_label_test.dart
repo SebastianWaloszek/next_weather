@@ -11,7 +11,7 @@ void main() {
   });
 
   testWidgets('TemperatureRangeLabel should show temperature text', (WidgetTester tester) async {
-    const temperature = TemperatureModel(min: 0, average: 5, max: 10);
+    const temperature = TemperatureModel(min: 0, current: 5, max: 10);
     const textStyle = TextStyle();
 
     await tester.pumpWidget(

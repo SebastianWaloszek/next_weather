@@ -95,7 +95,7 @@ class WeatherSummary extends StatelessWidget with GlobalSettings {
     return settingsBuilder(
       childBuilder: (settings) {
         return AnimatedUnitNumberText(
-          value: settings.temperatureUnit.getValueFromCertigrade(weatherPrediction.weather.temperature.average),
+          value: settings.temperatureUnit.getValueFromCertigrade(weatherPrediction.weather.temperature.current),
           valueUnit: AppLocalizations.of(context).degreeSign(),
           valueTextStyle: AppTextStyles.headline1(context),
           valueUnitTextStyle: AppTextStyles.headline2(context),
