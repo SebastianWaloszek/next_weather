@@ -5,11 +5,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'utils/localized_material_app.dart';
 
 void main() {
+  const title = 'test title';
+  const subtitle = 'test subtitle';
+
   testWidgets('NetworkErrorMessage should display title, subtitle and default image accondingly',
       (WidgetTester tester) async {
-    const title = 'test title';
-    const subtitle = 'test subtitle';
-
     await tester.pumpWidget(
       const LocalizedMaterialApp(
         child: NetworkErrorMessage(
@@ -31,5 +31,26 @@ void main() {
 
     final imageFinder = find.byType(Image);
     expect(imageFinder, findsOneWidget);
+  });
+
+  testWidgets('NetworkErrorMessage should execute onTap callback when tapped', (WidgetTester tester) async {
+    bool onTapCalled = false;
+    void onTapped() => onTapCalled = true;
+
+    await tester.pumpWidget(
+      LocalizedMaterialApp(
+        child: NetworkErrorMessage(
+          title: title,
+          subtitle: subtitle,
+          onTap: onTapped,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byType(NetworkErrorMessage));
+    await tester.pump();
+
+    expect(onTapCalled, isTrue);
   });
 }

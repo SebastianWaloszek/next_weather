@@ -6,7 +6,7 @@ import 'package:flutter_next_weather/presentation/features/home/widgets/weather_
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../../utils/test_data.dart';
-import '../../widgets/utils/localized_material_app.dart';
+import '../../../widgets/utils/localized_material_app.dart';
 
 void main() {
   Environment.setCurrent(DevelopmentEnvironment());

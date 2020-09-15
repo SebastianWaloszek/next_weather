@@ -5,7 +5,7 @@ import 'package:flutter_next_weather/presentation/features/settings/widgets/sect
 import 'package:flutter_next_weather/presentation/features/settings/widgets/settings_row.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../widgets/utils/localized_material_app.dart';
+import '../../../../widgets/utils/localized_material_app.dart';
 
 void main() {
   const themeMode = ThemeMode.dark;

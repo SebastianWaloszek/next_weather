@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/presentation/features/settings/widgets/data_source_disclaimer_label.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../widgets/utils/localized_material_app.dart';
+import '../../../widgets/utils/localized_material_app.dart';
 
 void main() {
   testWidgets('DataSourceDisclaimerLabel should contain the appropriate TextSpans', (WidgetTester tester) async {

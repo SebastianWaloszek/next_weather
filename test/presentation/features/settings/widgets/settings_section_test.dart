@@ -3,7 +3,7 @@ import 'package:flutter_next_weather/presentation/features/settings/widgets/sett
 import 'package:flutter_next_weather/presentation/features/settings/widgets/settings_section.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../widgets/utils/localized_material_app.dart';
+import '../../../widgets/utils/localized_material_app.dart';
 
 void main() {
   const String title = 'Section title';

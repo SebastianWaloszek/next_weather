@@ -11,7 +11,7 @@ import 'package:flutter_next_weather/presentation/page/scrollable_page_body_stat
 import 'package:flutter_next_weather/presentation/theme/device.dart';
 import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
 import 'package:flutter_next_weather/presentation/widgets/loading_indicator.dart';
-import 'package:flutter_next_weather/presentation/widgets/network_dependent.dart';
+import 'package:flutter_next_weather/presentation/widgets/failure_dependent.dart';
 import 'package:flutter_next_weather/presentation/widgets/screen_dependent.dart';
 
 import 'home_page_body_parameters.dart';
@@ -72,7 +72,9 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
 
   Widget _buildWeatherForecast() {
     if (parameters.isLoading && !parameters.wasLoadedOnce) {
-      return const LoadingIndicator();
+      return const LoadingIndicator(
+        key: Key(HomePageKeys.loadingIndicator),
+      );
     } else {
       return FailureDependent(
         failure: parameters.failure,

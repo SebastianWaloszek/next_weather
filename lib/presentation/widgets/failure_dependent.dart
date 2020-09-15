@@ -34,7 +34,7 @@ class FailureDependent extends StatelessWidget {
   }
 
   Widget _buildNetworkUnavailableMessage(BuildContext context) {
-    return _buildErrorMessage(
+    return NetworkErrorMessage(
       onTap: onRetry,
       title: AppLocalizations.of(context).noInternetFound(),
       subtitle: AppLocalizations.of(context).tapToTryAgain(),
@@ -42,24 +42,10 @@ class FailureDependent extends StatelessWidget {
   }
 
   Widget _buildUnexpectedErrorMessage(BuildContext context) {
-    return _buildErrorMessage(
+    return NetworkErrorMessage(
       onTap: onRetry,
       title: AppLocalizations.of(context).unexpectedError(),
       subtitle: AppLocalizations.of(context).tapToTryAgain(),
-    );
-  }
-
-  Widget _buildErrorMessage({
-    @required void Function() onTap,
-    @required String title,
-    @required String subtitle,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: NetworkErrorMessage(
-        title: title,
-        subtitle: subtitle,
-      ),
     );
   }
 }

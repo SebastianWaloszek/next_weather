@@ -22,6 +22,8 @@ void main() {
       const scrollOffset = 100.0;
       await driver.waitFor(HomePageFinders.scaffold);
 
+      await driver.waitForAbsent(HomePageFinders.loadingIndicator);
+      
       final listFinder = HomePageFinders.dayWeatherPredictionList;
       await driver.waitFor(listFinder);
 
