@@ -53,9 +53,10 @@ flutter run --release --flavor prod lib/main_prod.dart
 ## Running tests
 Try to run the tests via your IDE (preferably Visual Studio Code). In that case just lunch `Dart: Run all tests`. 
 
-Running tests via `flutter test` will fail because we are using mock data and for some reason the path is different 🤷‍♂️ when trying to run tests in our terminal in comparison to running it through an IDE. 
-
-You can always modify the path in code to make it work. 
+You can run flutter driver tests using the command:
+```
+flutter drive --flavor dev --target=test_driver/app.dart
+```
 
 ## Web version
 
