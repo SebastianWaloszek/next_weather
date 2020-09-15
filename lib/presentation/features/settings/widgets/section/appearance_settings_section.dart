@@ -4,6 +4,7 @@ import 'package:flutter_next_weather/presentation/extensions/temperature_unit_ui
 import 'package:flutter_next_weather/presentation/extensions/theme_mode_ui_extensions.dart';
 import 'package:flutter_next_weather/domain/entities/speed_unit.dart';
 import 'package:flutter_next_weather/domain/entities/temperature_unit.dart';
+import 'package:flutter_next_weather/presentation/features/settings/page/settings_page_keys.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
 import 'package:flutter_next_weather/presentation/theme/app_text_styles.dart';
 import 'package:flutter_next_weather/presentation/theme/color/app_colors.dart';
@@ -56,6 +57,7 @@ class AppearanceSettingsSection extends StatelessWidget {
 
   SettingsRow _buildThemeRow(BuildContext context) {
     return SettingsRow(
+      key: const Key(SettingsPageKeys.themeSettingsRow),
       leading: Icon(Icons.wb_sunny, color: AppColors.secondaryContent(context)),
       title: AppLocalizations.of(context).theme(),
       trailing: Text(
@@ -68,6 +70,7 @@ class AppearanceSettingsSection extends StatelessWidget {
 
   SettingsRow _buildTemperatureUnitRow(BuildContext context) {
     return SettingsRow(
+      key: const Key(SettingsPageKeys.temperatureUnitSettingsRow),
       leading: Icon(Icons.thermostat_outlined, color: AppColors.secondaryContent(context)),
       title: AppLocalizations.of(context).temperatureUnits(),
       trailing: Text(
@@ -80,6 +83,7 @@ class AppearanceSettingsSection extends StatelessWidget {
 
   SettingsRow _buildWindSpeedUnitRow(BuildContext context) {
     return SettingsRow(
+      key: const Key(SettingsPageKeys.windSpeedUnitSettingsRow),
       leading: Icon(Icons.speed, color: AppColors.secondaryContent(context)),
       title: AppLocalizations.of(context).speedUnits(),
       trailing: Text(

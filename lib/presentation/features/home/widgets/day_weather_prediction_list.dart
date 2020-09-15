@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
+import 'package:flutter_next_weather/presentation/features/home/page/home_page_keys.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/day_weather_prediction_cell.dart';
 import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.dart';
 
@@ -61,6 +62,7 @@ class DayWeatherPredictionList extends StatelessWidget {
     final weatherPrediction = weatherPredictions.elementAt(index);
     return Center(
       child: DayWeatherPredictionCell(
+        key: Key(HomePageKeys.dayWeatherPredictionCell(index)),
         weatherPrediction: weatherPrediction,
         isSelected: weatherPrediction == selectedWeatherPrediction,
         onSelected: onItemSelected,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_option.dart';
+import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_page_keys.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_page_parameters.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/states/mobile_settings_picker_page_body_state.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/states/web_settings_picker_page_body_state.dart';
@@ -37,6 +38,7 @@ class SettingsPickerPageBodyState extends ScrollablePageBodyState<SettingsPicker
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key(SettingsPickerPageKeys.scaffold),
       body: SafeArea(
         child: _buildBody(),
       ),
@@ -54,6 +56,7 @@ class SettingsPickerPageBodyState extends ScrollablePageBodyState<SettingsPicker
 
   Widget buildHeader() {
     return Header(
+      backButtonKey: const Key(SettingsPickerPageKeys.backButton),
       title: parameters.pageTitle,
     );
   }
@@ -69,14 +72,16 @@ class SettingsPickerPageBodyState extends ScrollablePageBodyState<SettingsPicker
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) => buildOptionRow(parameters.options[index]),
+      itemBuilder: buildOptionRow,
       itemCount: parameters.options.length,
     );
   }
 
-  Widget buildOptionRow(SettingsPickerOption option) {
+  Widget buildOptionRow(BuildContext context, int index) {
+    final option = parameters.options[index];
     final isSelected = selectedOption == option;
     return InkWell(
+      key: Key(SettingsPickerPageKeys.optionRow(index)),
       onTap: () => selectOption(option),
       child: Container(
         padding: const EdgeInsets.only(

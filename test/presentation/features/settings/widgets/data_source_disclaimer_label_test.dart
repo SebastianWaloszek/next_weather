@@ -20,9 +20,9 @@ void main() {
     final TextSpan mainTextSpan = textWidget.text;
 
     expect(mainTextSpan.children.length, 2);
-    mainTextSpan.children.forEach((child) {
+    for (final child in mainTextSpan.children) {
       expect(child, isA<TextSpan>());
-    });
+    }
 
     final TextSpan secondChildTextSpan = mainTextSpan.children.last;
     expect(secondChildTextSpan.recognizer, isNotNull);

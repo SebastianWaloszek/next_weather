@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/common/utils/extensions/date_time_extensions.dart';
 import 'package:flutter_next_weather/common/utils/extensions/string_extensions.dart';
 import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
+import 'package:flutter_next_weather/presentation/features/home/page/home_page_keys.dart';
 import 'package:flutter_next_weather/presentation/theme/app_text_styles.dart';
 import 'package:flutter_next_weather/presentation/theme/color/app_colors.dart';
 import 'package:flutter_next_weather/presentation/widgets/button.dart';
@@ -63,6 +64,7 @@ class HomePageHeader extends StatelessWidget {
 
   Widget _buildSettingsIcon(BuildContext context) {
     return Button(
+      key: const Key(HomePageKeys.settingsButton),
       width: 40,
       onTapped: onSettingsTapped,
       icon: Icons.settings_outlined,

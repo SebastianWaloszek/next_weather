@@ -26,8 +26,9 @@ dependencies:
   package_info: ^0.4.3
 
 dev_dependencies:
-  flutter_test:
+  flutter_driver:
     sdk: flutter
+  test: any
   intl_translation: ^0.17.10+1
   bloc_test: ^7.0.4
   lint: ^1.2.0

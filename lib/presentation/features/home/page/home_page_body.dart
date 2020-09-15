@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_next_weather/presentation/features/home/page/home_page_keys.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/day_weather_prediction_list.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/home_page_header.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/weather_details.dart';
@@ -37,6 +38,7 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key(HomePageKeys.homePageScaffold),
       body: SafeArea(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,6 +124,13 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
         children: [
           if (Device.isWidescreen(context)) _buildHeader(bottomOffset: 0),
           WeatherSummary(
+            key: Key(
+              HomePageKeys.weatherSummary(
+                parameters.weatherForecast.weatherPredictions.indexOf(
+                  parameters.selectedWeatherPrediction,
+                ),
+              ),
+            ),
             margin: const EdgeInsets.symmetric(
               horizontal: AppThemeConstants.horizontalPagePadding,
               vertical: 50,
@@ -137,6 +146,13 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
 
   Widget _buildWeatherDetails() {
     return WeatherDetails(
+      key: Key(
+        HomePageKeys.weatherDetails(
+          parameters.weatherForecast.weatherPredictions.indexOf(
+            parameters.selectedWeatherPrediction,
+          ),
+        ),
+      ),
       weather: parameters.selectedWeatherPrediction.weather,
       scrollDirection: Device.isWidescreen(context) ? Axis.vertical : Axis.horizontal,
     );
@@ -148,6 +164,7 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
       height: size,
       width: Device.isWidescreen(context) ? size : null,
       child: DayWeatherPredictionList(
+        key: const Key(HomePageKeys.dayWeatherPredictionList),
         scrollDirection: Device.isWidescreen(context) ? Axis.vertical : Axis.horizontal,
         weatherPredictions: parameters.weatherForecast.weatherPredictions,
         selectedWeatherPrediction: parameters.selectedWeatherPrediction,
