@@ -11,22 +11,28 @@ class NetworkErrorMessage extends StatelessWidget {
 
   final AssetImage image;
 
+  final void Function() onTap;
+
   const NetworkErrorMessage({
     Key key,
     this.title,
     this.subtitle,
     this.image,
+    this.onTap,
   })  : assert(title != null || subtitle != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _buildImage(context),
-        _buildTextColumn(context),
-      ],
+    return InkWell(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildImage(context),
+          _buildTextColumn(context),
+        ],
+      ),
     );
   }
 

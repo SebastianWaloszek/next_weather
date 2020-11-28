@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/domain/entities/speed_unit.dart';
 import 'package:flutter_next_weather/domain/entities/temperature_unit.dart';
+import 'package:flutter_next_weather/presentation/extensions/speed_unit_ui_extensions.dart';
+import 'package:flutter_next_weather/presentation/extensions/temperature_unit_ui_extensions.dart';
 import 'package:flutter_next_weather/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_option.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
-import 'package:flutter_next_weather/common/utils/extensions/theme_mode_extensions.dart';
+import 'package:flutter_next_weather/presentation/extensions/theme_mode_ui_extensions.dart';
 import 'package:meta/meta.dart';
 
 class SettingsPickerPageArguments {
@@ -35,7 +37,9 @@ class SettingsPickerPageArguments {
     return SettingsPickerPageArguments(
       pageTitle: AppLocalizations.of(context).theme(),
       initialOption: initialOptionSelected,
-      options: ThemeMode.values.map((themeMode) => themeMode.toSettingsOption(context)).toList(),
+      options: ThemeMode.values
+          .map((themeMode) => themeMode.toSettingsOption(context))
+          .toList(),
       onOptionSelected: onOptionSelected,
       bloc: bloc,
     );
@@ -50,7 +54,9 @@ class SettingsPickerPageArguments {
     return SettingsPickerPageArguments(
       pageTitle: AppLocalizations.of(context).temperatureUnits(),
       initialOption: initialOptionSelected,
-      options: TemperatureUnit.values.map((unit) => unit.toSettingsOption(context)).toList(),
+      options: TemperatureUnit.values
+          .map((unit) => unit.toSettingsOption(context))
+          .toList(),
       onOptionSelected: onOptionSelected,
       bloc: bloc,
     );
@@ -59,13 +65,15 @@ class SettingsPickerPageArguments {
   factory SettingsPickerPageArguments.forWindSpeedUnits(
     BuildContext context, {
     SettingsPickerOption initialOptionSelected,
-    Function(SettingsPickerOption) onOptionSelected,
+    void Function(SettingsPickerOption) onOptionSelected,
     SettingsBloc bloc,
   }) {
     return SettingsPickerPageArguments(
-      pageTitle: AppLocalizations.of(context).temperatureUnits(),
+      pageTitle: AppLocalizations.of(context).speedUnits(),
       initialOption: initialOptionSelected,
-      options: SpeedUnit.values.map((unit) => unit.toSettingsOption(context)).toList(),
+      options: SpeedUnit.values
+          .map((unit) => unit.toSettingsOption(context))
+          .toList(),
       onOptionSelected: onOptionSelected,
       bloc: bloc,
     );

@@ -7,7 +7,6 @@ final Map<ThemeMode, ThemeData> appThemes = {
     accentColor: LightThemeColors.primaryAccent,
     primaryColor: LightThemeColors.primaryAccent,
     scaffoldBackgroundColor: LightThemeColors.background,
-    cursorColor: LightThemeColors.primaryAccent,
     canvasColor: Colors.transparent,
     brightness: Brightness.light,
   ),
@@ -15,7 +14,6 @@ final Map<ThemeMode, ThemeData> appThemes = {
     accentColor: DarkThemeColors.primaryAccent,
     canvasColor: Colors.transparent,
     scaffoldBackgroundColor: DarkThemeColors.background,
-    cursorColor: DarkThemeColors.primaryAccent,
     brightness: Brightness.dark,
   ),
 };

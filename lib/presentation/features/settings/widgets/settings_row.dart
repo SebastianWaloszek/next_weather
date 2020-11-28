@@ -11,6 +11,7 @@ class SettingsRow extends StatelessWidget {
   final void Function() onSelected;
 
   const SettingsRow({
+    Key key,
     @required this.leading,
     @required this.title,
     @required this.onSelected,
@@ -18,7 +19,8 @@ class SettingsRow extends StatelessWidget {
     this.trailing,
   })  : assert(leading != null),
         assert(title != null),
-        assert(onSelected != null);
+        assert(onSelected != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {

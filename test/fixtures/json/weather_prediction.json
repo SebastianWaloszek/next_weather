@@ -1,0 +1,17 @@
+{
+    "id": 4597252125360128,
+    "weather_state_name": "Clear",
+    "weather_state_abbr": "c",
+    "wind_direction_compass": "WSW",
+    "created": "2020-09-12T12:23:52.856407Z",
+    "applicable_date": "2020-09-12",
+    "min_temp": 12.48,
+    "max_temp": 25.33,
+    "the_temp": 24.045,
+    "wind_speed": 6.81636031026008,
+    "wind_direction": 237.34963099183915,
+    "air_pressure": 1017.5,
+    "humidity": 54,
+    "visibility": 15.00487155014714,
+    "predictability": 68
+}

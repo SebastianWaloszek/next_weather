@@ -1,10 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_next_weather/common/utils/extensions/theme_mode_extensions.dart';
 import 'package:flutter_next_weather/domain/entities/speed_unit.dart';
 import 'package:flutter_next_weather/domain/entities/temperature_unit.dart';
+import 'package:flutter_next_weather/presentation/extensions/speed_unit_ui_extensions.dart';
+import 'package:flutter_next_weather/presentation/extensions/temperature_unit_ui_extensions.dart';
+import 'package:flutter_next_weather/presentation/extensions/theme_mode_ui_extensions.dart';
 import 'package:flutter_next_weather/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_page_body_parameters.dart';
+import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_option.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_page.dart';
 import 'package:flutter_next_weather/presentation/features/settings/page/settings_picker_page/settings_picker_page_arguments.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +26,8 @@ class SettingsPage extends StatefulWidget {
   _SettingsPageState createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver {
+class _SettingsPageState extends State<SettingsPage>
+    with WidgetsBindingObserver {
   final SettingsBloc settingsBloc = Injector.resolve<SettingsBloc>();
 
   @override
@@ -55,7 +59,8 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
   void _showSettingsPickerForTheme() {
     final arguments = SettingsPickerPageArguments.forThemePicker(
       context,
-      initialOptionSelected: settingsBloc.state.settings.themeMode.toSettingsOption(context),
+      initialOptionSelected:
+          settingsBloc.state.settings.themeMode.toSettingsOption(context),
       onOptionSelected: (option) {
         settingsBloc.add(
           ChangeThemeEvent(
@@ -72,9 +77,12 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
   void _showSettingsPickerForTemperatureUnits() {
     final arguments = SettingsPickerPageArguments.forTemperatureUnits(
       context,
-      initialOptionSelected: settingsBloc.state.settings.temperatureUnit.toSettingsOption(context),
-      onOptionSelected: (option) {
-        settingsBloc.add(ChangeTemperatureUnitsEvent(option.value));
+      initialOptionSelected:
+          settingsBloc.state.settings.temperatureUnit.toSettingsOption(context),
+      onOptionSelected: (SettingsPickerOption option) {
+        settingsBloc.add(
+          ChangeTemperatureUnitsEvent(option.value as TemperatureUnit),
+        );
       },
       bloc: settingsBloc,
     );
@@ -84,9 +92,10 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
   void _showSettingsPickerForWindSpeedUnits() {
     final arguments = SettingsPickerPageArguments.forWindSpeedUnits(
       context,
-      initialOptionSelected: settingsBloc.state.settings.windSpeedUnit.toSettingsOption(context),
-      onOptionSelected: (option) {
-        settingsBloc.add(ChangeWindSpeedUnitsEvent(option.value));
+      initialOptionSelected:
+          settingsBloc.state.settings.windSpeedUnit.toSettingsOption(context),
+      onOptionSelected: (SettingsPickerOption option) {
+        settingsBloc.add(ChangeWindSpeedUnitsEvent(option.value as SpeedUnit));
       },
       bloc: settingsBloc,
     );
@@ -110,7 +119,8 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
             context,
             settings: state.settings,
             showPickerForTheme: _showSettingsPickerForTheme,
-            showPickerForTemperatureUnits: _showSettingsPickerForTemperatureUnits,
+            showPickerForTemperatureUnits:
+                _showSettingsPickerForTemperatureUnits,
             showPickerForWindSpeedUnits: _showSettingsPickerForWindSpeedUnits,
           ),
         );

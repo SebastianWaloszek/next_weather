@@ -6,10 +6,14 @@ import 'package:flutter_next_weather/presentation/widgets/app_theme_constants.da
 class Header extends StatelessWidget {
   final String title;
 
+  final Key _backButtonKey;
+
   const Header({
     Key key,
+    Key backButtonKey,
     @required this.title,
   })  : assert(title != null),
+        _backButtonKey = backButtonKey,
         super(key: key);
 
   @override
@@ -43,6 +47,7 @@ class Header extends StatelessWidget {
 
   Widget _buildBackButton(BuildContext context) {
     return IconButton(
+      key: _backButtonKey,
       icon: Icon(
         Icons.arrow_back_ios,
         color: AppColors.primaryContent(context),

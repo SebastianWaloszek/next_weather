@@ -24,12 +24,13 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
       child: MaterialButton(
         height: height,
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        shape: RoundedRectangleBorder(borderRadius: AppThemeConstants.borderRadius),
+        shape: RoundedRectangleBorder(
+            borderRadius: AppThemeConstants.borderRadius),
         color: AppColors.secondaryBackground(context),
         onPressed: onTapped,
         child: Row(

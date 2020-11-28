@@ -1,7 +1,6 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_next_weather/common/blocs/network/network_bloc.dart';
 import 'package:flutter_next_weather/common/environment/environment.dart';
 import 'package:flutter_next_weather/common/environment/environment_dev.dart';
 import 'package:flutter_next_weather/common/environment/environment_prod.dart';
@@ -9,9 +8,9 @@ import 'package:flutter_next_weather/data/data_sources/local/local_settings_data
 import 'package:flutter_next_weather/data/data_sources/remote/remote_weather_data_source.dart';
 import 'package:flutter_next_weather/data/data_sources/settings_data_source.dart';
 import 'package:flutter_next_weather/data/data_sources/weather_data_source.dart';
-import 'package:flutter_next_weather/data/network/mock_interceptor.dart';
 import 'package:flutter_next_weather/data/network/network_info.dart';
 import 'package:flutter_next_weather/data/network/network_service.dart';
+import 'package:flutter_next_weather/data/network/managed_network_service.dart';
 import 'package:flutter_next_weather/data/network/network_service_impl.dart';
 import 'package:flutter_next_weather/data/network/web_network_info.dart';
 import 'package:flutter_next_weather/data/repositories/settings_repository_impl.dart';
@@ -69,26 +68,24 @@ class Injector {
   }
 
   static void _common() {
-    //                 //
-    //  N E T W O R K  //
-    //                 //
     container.registerSingleton(
       (c) => Dio(BaseOptions(
         baseUrl: Environment.current.baseUrl,
-      ))
-        ..interceptors.addAll(c.resolve()),
+      )),
     );
 
     container.registerSingleton<NetworkService>(
-      (c) => NetworkServiceImpl(
+      (c) => NetworkServiceImpl(dio: c.resolve()),
+      name: 'networkServiceImpl',
+    );
+
+    container.registerSingleton<NetworkService>(
+      (c) => ManagedNetworkService(
         networkInfo: c.resolve(),
-        dio: c.resolve(),
-        networkBloc: c.resolve(),
+        networkService: c.resolve('networkServiceImpl'),
       ),
     );
-    //                         //
-    //  D A T A   S O U R C E  //
-    //                         //
+
     container.registerSingleton<SettingsDataSource>(
       (c) => LocalSettingsDataSource(),
     );
@@ -96,9 +93,6 @@ class Injector {
       (c) => RemoteWeatherDataSource(networkService: c.resolve()),
     );
 
-    //                       //
-    //  R E P O S I T O R Y  //
-    //                       //
     container.registerSingleton<SettingsRepository>(
       (c) => SettingsRepositoryImpl(settingsDataSource: c.resolve()),
     );
@@ -106,17 +100,10 @@ class Injector {
       (c) => WeatherRepositoryImpl(dataSource: c.resolve()),
     );
 
-    //                   //
-    //  U S E   C A S E  //
-    //                   //
     container.registerSingleton((c) => LoadSettings(settingsRepository: c.resolve()));
     container.registerSingleton((c) => SaveSettings(settingsRepository: c.resolve()));
     container.registerSingleton((c) => GetWeatherForecast(weatherRepository: c.resolve()));
 
-    //             //
-    //  B L O C S  //
-    //             //
-    container.registerSingleton((c) => NetworkBloc());
     container.registerSingleton(
       (c) => SettingsBloc(
         loadSettings: c.resolve(),
@@ -124,25 +111,13 @@ class Injector {
       ),
     );
 
-    //                     //
-    //  P A G E   B L O C  //
-    //                     //
     container.registerSingleton((c) => HomePageBloc(getWeatherForecast: c.resolve()));
   }
 
-  static void _commonDevelopment() {
-    container.registerInstance<Iterable<Interceptor>>(<Interceptor>[
-      if (Environment.current.useMockData) MockInterceptor(),
-    ]);
-  }
+  static void _commonDevelopment() {}
 
-  static void _commonProduction() {
-    container.registerInstance<Iterable<Interceptor>>(<Interceptor>[]);
-  }
+  static void _commonProduction() {}
 
-  //     //
-  // WEB //
-  //     //
   static void _webCommon() {
     container.registerSingleton<NetworkInfo>(
       (c) => WebNetworkInfoImpl(),
@@ -153,9 +128,6 @@ class Injector {
 
   static void _webProduction() {}
 
-  //        //
-  // MOBILE //
-  //        //
   static void _mobileCommon() {
     container.registerSingleton<NetworkInfo>(
       (c) => NetworkInfoImpl(c.resolve()),

@@ -3,6 +3,9 @@ import 'package:flutter_next_weather/domain/entities/humidity_unit.dart';
 import 'package:flutter_next_weather/domain/entities/pressure_unit.dart';
 import 'package:flutter_next_weather/domain/entities/speed_unit.dart';
 import 'package:flutter_next_weather/domain/entities/weather.dart';
+import 'package:flutter_next_weather/presentation/extensions/huminidty_unit_ui_extensions.dart';
+import 'package:flutter_next_weather/presentation/extensions/pressure_unit_ui_extensions.dart';
+import 'package:flutter_next_weather/presentation/extensions/speed_unit_ui_extensions.dart';
 import 'package:flutter_next_weather/presentation/features/home/widgets/weather_detail.dart';
 import 'package:flutter_next_weather/presentation/localization/app_localizations.dart';
 import 'package:flutter_next_weather/presentation/mixins/global_settings.dart';
@@ -39,7 +42,7 @@ abstract class WeatherDetailFactory with GlobalSettings {
   static Widget _buildWindDetail(BuildContext context, Weather weather, SpeedUnit windSpeedUnit) {
     return WeatherDetail(
       title: AppLocalizations.of(context).wind(),
-      value: windSpeedUnit.getValueFromMilesPerHour(weather.windSpeed.value).floor(),
+      value: windSpeedUnit.getValueFromMilesPerHour(weather.windSpeed.value),
       valueUnit: windSpeedUnit.getDescription(context),
     );
   }

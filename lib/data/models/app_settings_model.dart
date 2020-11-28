@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter_next_weather/data/extensions/speed_unit_data_extensions.dart';
+import 'package:flutter_next_weather/data/extensions/temperature_unit_data_extensions.dart';
 import 'package:flutter_next_weather/domain/entities/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_next_weather/domain/entities/speed_unit.dart';
@@ -46,9 +48,10 @@ class AppSettingsModel extends AppSettings {
     const defaultSettings = AppSettingsModel.defaultSettings();
     return AppSettingsModel(
       themeMode: _themeModeFromString(settingsMap[themeKey]) ?? defaultSettings.themeMode,
-      temperatureUnit:
-          TemperatureUnitExtensions.fromRawValue(settingsMap[temperatureUnitKey]) ?? defaultSettings.temperatureUnit,
-      windSpeedUnit: SpeedUnitExtensions.fromRawValue(settingsMap[windSpeedUnitKey]) ?? defaultSettings.windSpeedUnit,
+      temperatureUnit: TemperatureUnitDataExtensions.fromRawValue(settingsMap[temperatureUnitKey]) ??
+          defaultSettings.temperatureUnit,
+      windSpeedUnit:
+          SpeedUnitDataExtensions.fromRawValue(settingsMap[windSpeedUnitKey]) ?? defaultSettings.windSpeedUnit,
     );
   }
 

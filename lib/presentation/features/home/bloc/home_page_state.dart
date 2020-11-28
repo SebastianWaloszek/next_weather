@@ -4,10 +4,12 @@ part of 'home_page_bloc.dart';
 abstract class HomePageState extends Equatable {
   final WeatherForecast weatherForecast;
   final WeatherPrediction selectedWeatherPrediction;
+  final Failure failure;
 
   const HomePageState({
     this.weatherForecast,
     this.selectedWeatherPrediction,
+    this.failure,
   });
 
   @override
@@ -42,7 +44,5 @@ class LoadedHomePageState extends HomePageState {
 }
 
 class FailedHomePageState extends HomePageState {
-  final Failure failure;
-
-  const FailedHomePageState(this.failure);
+  const FailedHomePageState(Failure failure) : super(failure: failure);
 }
