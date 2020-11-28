@@ -161,18 +161,20 @@ abstract class HomePageBodyState extends ScrollablePageBodyState<HomePageBody> {
         ),
       ),
       weather: parameters.selectedWeatherPrediction.weather,
-      scrollDirection: Device.isWidescreen(context) ? Axis.vertical : Axis.horizontal,
+      scrollDirection:
+          Device.isWidescreen(context) ? Axis.vertical : Axis.horizontal,
     );
   }
 
   Widget _buildDayWeatherPredictionList() {
     const double size = 250;
-    return Container(
+    return SizedBox(
       height: size,
       width: Device.isWidescreen(context) ? size : null,
       child: DayWeatherPredictionList(
         key: const Key(HomePageKeys.dayWeatherPredictionList),
-        scrollDirection: Device.isWidescreen(context) ? Axis.vertical : Axis.horizontal,
+        scrollDirection:
+            Device.isWidescreen(context) ? Axis.vertical : Axis.horizontal,
         weatherPredictions: parameters.weatherForecast.weatherPredictions,
         selectedWeatherPrediction: parameters.selectedWeatherPrediction,
         onItemSelected: parameters.selectWeatherPredition,

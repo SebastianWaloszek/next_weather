@@ -7,8 +7,10 @@ class WeatherForecastModel extends WeatherForecast {
       : super(
           location: LocationModel.fromJson(json),
           weatherPredictions: List<WeatherPredictionModel>.from(
-            json['consolidated_weather'].map(
-              (weatherPrediction) => WeatherPredictionModel.fromJson(weatherPrediction),
+            (json['consolidated_weather'] as List<dynamic>).map(
+              (weatherPrediction) => WeatherPredictionModel.fromJson(
+                weatherPrediction as Map<String, dynamic>,
+              ),
             ),
           ),
         );

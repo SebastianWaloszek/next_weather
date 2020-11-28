@@ -13,8 +13,8 @@ class TemperatureModel extends Temperature {
 
   TemperatureModel.fromJson(Map<String, dynamic> json)
       : super(
-          current: json['the_temp']?.floor(),
-          min: json['min_temp']?.floor(),
-          max: json['max_temp']?.floor(),
+          current: json['the_temp']?.floor() as int,
+          min: json['min_temp']?.floor() as int,
+          max: json['max_temp']?.floor() as int,
         );
 }

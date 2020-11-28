@@ -16,6 +16,7 @@ class RemoteWeatherDataSource implements WeatherDataSource {
   @override
   Future<Result<WeatherForecast, Failure>> getWeatherForecast(int woeId) {
     final request = GetWeatherForecastRequest(woeId);
-    return networkService.make(request);
+    return networkService.make(request)
+        as Future<Result<WeatherForecast, Failure>>;
   }
 }

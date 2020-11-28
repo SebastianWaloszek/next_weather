@@ -10,12 +10,13 @@ void main() {
   const child = Icon(Icons.add);
   final failure = UnexpectedFailure();
 
-  testWidgets('FailureDependent should show child when no failure is passed', (WidgetTester tester) async {
+  testWidgets('FailureDependent should show child when no failure is passed',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       LocalizedMaterialApp(
         child: FailureDependent(
-          child: child,
           onRetry: () => {},
+          child: child,
         ),
       ),
     );
@@ -25,15 +26,16 @@ void main() {
     expect(childFinder, findsOneWidget);
   });
 
-  testWidgets('FailureDependent should not show child when failure is passed', (WidgetTester tester) async {
+  testWidgets('FailureDependent should not show child when failure is passed',
+      (WidgetTester tester) async {
     void onTapped() => {};
 
     await tester.pumpWidget(
       LocalizedMaterialApp(
         child: FailureDependent(
-          child: child,
           failure: failure,
           onRetry: onTapped,
+          child: child,
         ),
       ),
     );

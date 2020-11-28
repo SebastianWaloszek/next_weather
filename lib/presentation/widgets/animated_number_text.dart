@@ -19,7 +19,8 @@ class AnimatedNumberText extends ImplicitlyAnimatedWidget {
         );
 
   @override
-  ImplicitlyAnimatedWidgetState<ImplicitlyAnimatedWidget> createState() => _AnimatedCountState();
+  ImplicitlyAnimatedWidgetState<ImplicitlyAnimatedWidget> createState() =>
+      _AnimatedCountState();
 }
 
 class _AnimatedCountState extends AnimatedWidgetBaseState<AnimatedNumberText> {
@@ -38,7 +39,7 @@ class _AnimatedCountState extends AnimatedWidgetBaseState<AnimatedNumberText> {
     _number = visitor(
       _number,
       widget.number,
-      (dynamic value) => IntTween(begin: value),
-    );
+      (value) => IntTween(begin: value as int),
+    ) as IntTween;
   }
 }

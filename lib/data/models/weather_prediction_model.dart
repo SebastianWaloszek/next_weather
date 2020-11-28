@@ -4,7 +4,7 @@ import 'package:flutter_next_weather/domain/entities/weather_prediction.dart';
 class WeatherPredictionModel extends WeatherPrediction {
   WeatherPredictionModel.fromJson(Map<String, dynamic> json)
       : super(
-          day: DateTime.tryParse(json['applicable_date']),
+          day: DateTime.tryParse(json['applicable_date'] as String),
           weather: WeatherModel.fromJson(json),
         );
 }

@@ -37,7 +37,9 @@ class SettingsPickerPageArguments {
     return SettingsPickerPageArguments(
       pageTitle: AppLocalizations.of(context).theme(),
       initialOption: initialOptionSelected,
-      options: ThemeMode.values.map((themeMode) => themeMode.toSettingsOption(context)).toList(),
+      options: ThemeMode.values
+          .map((themeMode) => themeMode.toSettingsOption(context))
+          .toList(),
       onOptionSelected: onOptionSelected,
       bloc: bloc,
     );
@@ -52,7 +54,9 @@ class SettingsPickerPageArguments {
     return SettingsPickerPageArguments(
       pageTitle: AppLocalizations.of(context).temperatureUnits(),
       initialOption: initialOptionSelected,
-      options: TemperatureUnit.values.map((unit) => unit.toSettingsOption(context)).toList(),
+      options: TemperatureUnit.values
+          .map((unit) => unit.toSettingsOption(context))
+          .toList(),
       onOptionSelected: onOptionSelected,
       bloc: bloc,
     );
@@ -61,13 +65,15 @@ class SettingsPickerPageArguments {
   factory SettingsPickerPageArguments.forWindSpeedUnits(
     BuildContext context, {
     SettingsPickerOption initialOptionSelected,
-    Function(SettingsPickerOption) onOptionSelected,
+    void Function(SettingsPickerOption) onOptionSelected,
     SettingsBloc bloc,
   }) {
     return SettingsPickerPageArguments(
-      pageTitle: AppLocalizations.of(context).temperatureUnits(),
+      pageTitle: AppLocalizations.of(context).speedUnits(),
       initialOption: initialOptionSelected,
-      options: SpeedUnit.values.map((unit) => unit.toSettingsOption(context)).toList(),
+      options: SpeedUnit.values
+          .map((unit) => unit.toSettingsOption(context))
+          .toList(),
       onOptionSelected: onOptionSelected,
       bloc: bloc,
     );

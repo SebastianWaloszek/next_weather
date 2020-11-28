@@ -10,5 +10,7 @@ class GetWeatherForecastRequest extends Request<WeatherForecast> {
         );
 
   @override
-  WeatherForecast createResponse(dynamic json) => WeatherForecastModel.fromJson(json);
+  WeatherForecast createResponse(dynamic json) => WeatherForecastModel.fromJson(
+        json as Map<String, dynamic>,
+      );
 }
