@@ -10,10 +10,10 @@ A Flutter weather application.
 
 This app was developed and tested on the following flutter channel and version:
 ```javascript
-Flutter 1.21.0-9.2.pre • channel beta • https://github.com/flutter/flutter.git
-Framework • revision 81a45ec2e5 (2 weeks ago) • 2020-08-27 14:14:33 -0700
-Engine • revision 20a9531835
-Tools • Dart 2.10.0 (build 2.10.0-7.3.beta)
+Flutter 1.24.0-10.2.pre • channel beta • https://github.com/flutter/flutter.git
+Framework • revision 022b333a08 (10 days ago) • 2020-11-18 11:35:09 -0800
+Engine • revision 07c1eed46b
+Tools • Dart 2.12.0 (build 2.12.0-29.10.beta)
 ```
 
 ## Tested devices
