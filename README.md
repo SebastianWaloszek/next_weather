@@ -6,6 +6,8 @@ A Flutter weather application.
 - [Figma design project](https://www.figma.com/file/PdF4XmYoXR4f4v0cZvc7Z0/Weather-App?node-id=0%3A1)
 - [Clickable prototype](https://www.figma.com/proto/PdF4XmYoXR4f4v0cZvc7Z0/Weather-App?node-id=2%3A1338&viewport=-99%2C328%2C0.45586439967155457&scaling=scale-down) 
 
+![alt text](https://mir-cdn.behance.net/v1/rendition/project_modules/fs/f9aa7f108007931.5fb4334bef868.png)
+
 ## Flutter version
 
 This app was developed and tested on the following flutter channel and version:
